@@ -1,5 +1,3 @@
-'use client'
-
 import "./styles/reset.css";
 import "./styles/globals.css";
 import "./styles/colors.css";
@@ -10,10 +8,10 @@ import "./styles/ui.css";
 import { inter } from "./fonts/fonts";
 
 
-// export const metadata = {
-// 	title: "Spectral",
-// 	description: "",
-// };
+export const metadata = {
+	title: "Spectral",
+	description: "",
+};
 
 export default function RootLayout({ children }) {
 	return (

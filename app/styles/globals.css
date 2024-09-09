@@ -17,7 +17,6 @@ body {
   /* -webkit-font-smoothing: antialiased; */
   /* -moz-osx-font-smoothing: grayscale; */
   /* font: var(--font-ui); */
-
   font-size: 13px;
   line-height: 18px;
   color: var(--t8);
@@ -36,9 +35,17 @@ a {
   background: var(--highlight-color);
 }
 
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.icon {
+  display: block;
+  overflow: visible;
+  position: relative;
+  pointer-events: none;
+  flex-shrink: 0;
+  fill: currentcolor;
 }

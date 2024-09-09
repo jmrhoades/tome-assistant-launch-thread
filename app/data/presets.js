@@ -1,10 +1,17 @@
+import BarChart from "../icons/bar-chart";
+import Building from "../icons/building";
+import Globe from "../icons/globe";
+import Heart from "../icons/heart";
+import People from "../icons/people";
+import PersonCircle from "../icons/person-circle";
+import Table from "../icons/table";
 
 export const presets = [
 	{
 		id: "executive-top-of-mind",
 		label: "Executive top of mind",
         info: "Summary of key findings and insights from research",
-		icon: "personcircle",
+		icon: <PersonCircle size={24} />,
 		prompt: "Executive top of mind",
         accentColor: "var(--text-color-sand)",
 	},
@@ -12,7 +19,7 @@ export const presets = [
 		id: "business-strategy-and-initiatives",
 		label: "Business strategy & initiatives",
         info: "Summary of key findings and insights from research",
-		icon: "table",
+		icon: <Table size={24} />,
 		prompt: "Business strategy & initiatives",
         accentColor: "var(--text-color-sand)",
 	},
@@ -20,7 +27,7 @@ export const presets = [
 		id: "corporate-structure",
 		label: "Corporate structure",
         info: "Summary of key findings and insights from research",
-		icon: "people",
+		icon: <People size={24} />,
 		prompt: "Corporate structure",
         accentColor: "var(--text-color-sand)",
 	},
@@ -28,7 +35,7 @@ export const presets = [
 		id: "financial-health",
 		label: "Financial health",
         info: "Summary of key findings and insights from research",
-		icon: "barchart",
+		icon: <BarChart size={24} />,
 		prompt: "Financials",
         accentColor: "var(--text-color-sand)",
 	},
@@ -36,7 +43,7 @@ export const presets = [
 		id: "account-summary",
 		label: "Account summary",
         info: "Summary of key findings and insights from research",
-		icon: "globe",
+		icon: <Globe size={24} />,
 		prompt: "Account summary",
         accentColor: "var(--text-color-purple)",
 	},
@@ -44,7 +51,7 @@ export const presets = [
 		id: "value-drivers",
 		label: "Value drivers",
         info: "Summary of key findings and insights from research",
-		icon: "heart",
+		icon: <Heart size={24} />,
 		prompt: "Value drivers",
         accentColor: "var(--text-color-sand)",
 	},
@@ -52,7 +59,7 @@ export const presets = [
 		id: "company-industry-overview",
 		label: "Company & industry overview",
         info: "Identify top initiative and leadership driving them",
-		icon: "building",
+		icon: <Building size={24} />,
 		prompt: "Company & industry overview",
         accentColor: "var(--text-color-mint)",
 	},

@@ -8,8 +8,12 @@ import { presets } from "./data/presets";
 
 import PresetCard from "./components/preset-card";
 import Promptbar from "./components/promptbar";
-import Icon from "./components/icon";
+
 import Button from "./components/button";
+import Add from "./icons/add";
+import SidebarLeft from "./icons/sidebar-left";
+import Clock from "./icons/clock";
+import Opportunity from "./icons/opportunity";
 
 export default function Home() {
 	const cards = [presets[presets.length - 3], presets[presets.length - 1], presets[presets.length - 2]];
@@ -19,16 +23,16 @@ export default function Home() {
 			<header className={styles.header}>
 				<div className={styles.headerLeft}>
 					<Button>
-						<Icon name={"sidebar-left"} />
+            <SidebarLeft size={24} />
 					</Button>
 
 					<Button>
-						<Icon name={"add"} />
+            <Add size={24} />
 					</Button>
 				</div>
 				<div className={styles.headerRight}>
 					<Button>
-						<Icon name={"clock"} />
+            <Clock size={24} />
 					</Button>
 				</div>
 			</header>
@@ -38,7 +42,7 @@ export default function Home() {
 					<h2 className={`${diatype.className}`}>Spectral</h2>
 					<div className={styles.meta}>
 						<Button>
-							<Icon name={"opportunity"} size={20} />
+              <Opportunity size={20} />
 							Spectral – Closed Lost
 						</Button>
 						<Button>

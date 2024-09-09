@@ -4,8 +4,7 @@ import * as React from "react";
 
 import styles from "./promptbar.module.css";
 import PromptbarMenu from "./promptbar-menu";
-
-import Icon from "./icon";
+import ArrowUp from "../icons/arrow-up";
 
 export default function Promptbar({ value = "", handleSubmit, handleMenuSelection }) {
 	const ref = React.useRef();
@@ -45,7 +44,7 @@ export default function Promptbar({ value = "", handleSubmit, handleMenuSelectio
 			</form>
 			
 			<button className={styles.SendButton} disabled={input.trim().length === 0}>
-				<Icon name={"arrowup"} size={24} />
+				<ArrowUp size={24} />
 			</button>
 
 		</div>

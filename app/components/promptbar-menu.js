@@ -1,21 +1,22 @@
-'use client'
+"use client";
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 import styles from "./promptbar-menu.module.css";
 import { presets } from "../data/presets";
-import Icon from "./icon";
+import Return from "../icons/return";
+import Menu from "../icons/menu";
 
 export default function PromptbarMenu(props) {
 	return (
 		<DropdownMenu.Root modal={false}>
 			<DropdownMenu.Trigger asChild>
 				<button className={styles.MenuButton} aria-label="Preset commands">
-					<Icon size={24} name={"menu"} />
+					<Menu size={24} />
 				</button>
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Portal>
-				<DropdownMenu.Content className={styles.Menu} side={"top"} sideOffset={14} align={"end"} alignOffset={-6}>
+				<DropdownMenu.Content className={styles.Menu} side={"top"} sideOffset={14} align={"start"} alignOffset={-6}>
 					{presets.map(o => (
 						<DropdownMenu.Item
 							key={o.id}
@@ -28,12 +29,11 @@ export default function PromptbarMenu(props) {
 							}}
 						>
 							<div className={styles.Leading}>
-								<Icon name={o.icon} size={24} />
-
+								{o.icon}
 								{o.label}
 							</div>
 							<div className={styles.Trailing}>
-								<Icon size={24} name={"return"} />
+								<Return size={24} />
 							</div>
 						</DropdownMenu.Item>
 					))}
