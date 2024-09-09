@@ -4,8 +4,8 @@ import * as React from "react";
 
 import styles from "./promptbar.module.css";
 import PromptbarMenu from "./promptbar-menu";
-import { Button } from "./button";
-import { Icon } from "./icon";
+
+import Icon from "./icon";
 
 export default function Promptbar({ value = "", handleSubmit, handleMenuSelection }) {
 	const ref = React.useRef();

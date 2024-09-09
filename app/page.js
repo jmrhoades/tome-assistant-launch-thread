@@ -1,11 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Icon } from "./components/icon";
-import { Button } from "./components/button";
+
 import { diatype } from "./fonts/fonts";
 import { presets } from "./data/presets";
+
 import PresetCard from "./components/preset-card";
 import Promptbar from "./components/promptbar";
+import Icon from "./components/icon";
+import Button from "./components/button";
 
 export default function Home() {
 	const cards = [presets[presets.length - 3], presets[presets.length - 1], presets[presets.length - 2]];

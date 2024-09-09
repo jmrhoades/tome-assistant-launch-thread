@@ -1,4 +1,4 @@
-import { Icon } from "./icon";
+import Icon from "./icon";
 import styles from "./preset-card.module.css";
 
 export default function PresetCard({ icon, accentColor, heading, body, onClick }) {

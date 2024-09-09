@@ -2,7 +2,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 import styles from "./promptbar-menu.module.css";
 import { presets } from "../data/presets";
-import { Icon } from "./icon";
+import Icon from "./icon";
 
 export default function PromptbarMenu(props) {
 	return (
