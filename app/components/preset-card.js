@@ -1,3 +1,5 @@
+'use client'
+
 import Icon from "./icon";
 import styles from "./preset-card.module.css";
 
