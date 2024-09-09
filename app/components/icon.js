@@ -1,4 +1,4 @@
-export default function Home(props) {
+export default function Icon(props) {
 	const { size = 24, name = "sidebar-left" } = props;
 	return (
 		<svg
