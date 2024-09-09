@@ -1,0 +1,59 @@
+.MenuButton {
+    padding: 6px;
+    border-radius: 6px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    color: var(--t7);
+}
+
+.MenuButton:hover,
+.MenuButton:active,
+.MenuButton[data-state="open"] {
+    background-color: var(--t2);
+}
+
+
+
+.Menu {
+    /* display: flex; */
+    width: var(--promptbar-menu-width);
+    background-color: var(--menu-background);
+    padding: 8px;
+    color: var(--t8);
+    border-radius: 12px;
+    box-shadow: var(--menu-shadow);
+}
+
+.MenuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 20px;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.MenuItem:hover,
+.MenuItem:focus {
+    color: var(--t9);
+    outline: none;
+    background-color: var(--t2);
+}
+
+.Leading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.Trailing {
+    color: var(--t7);
+    opacity: 0;
+}
+
+.MenuItem:hover .Trailing,
+.MenuItem:focus .Trailing {
+    opacity: 1;
+}

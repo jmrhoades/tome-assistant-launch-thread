@@ -1,0 +1,47 @@
+:root {
+    --page: #ffffff;
+    --border-width: 0.5px;
+    --border-color: var(--t4);
+    --ui-font-size: 13px;
+    --ui-line-height: 18px;
+    --button-primary-background: #000;
+    --button-primary-color: #FFF;
+
+    --font-size-small: 13px;
+    --assistant-message-max-width: 696px;
+    --thread-max-width: 696px;
+    --prompt-bar-max-width: 740px;
+    --promptbar-border-radius: 12px;
+    --promptbar-padding: 14px 6px;
+    --promptbar-background: var(--z0);
+    --promptbar-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 2px 0px, rgba(0, 0, 0, 0.02) 0px 4px 6px 0px, 0 0 0 var(--border-width) var(--border-color);
+    
+    /* 0px 13px 8px 0px rgba(0, 0, 0, 0.01), 0px 6px 6px 0px rgba(0, 0, 0, 0.01), 0px 1px 3px 0px rgba(0, 0, 0, 0.01), 0 0 0 var(--border-width) var(--border-color); */
+
+
+
+    /* --promptbar-shadow: 0 0 0 var(--border-width) var(--border-color); */
+    --promptbar-placeholder: var(--t7);
+    --contrast-color: var(--t9);
+    --user-message-bubble-background: var(--z1);
+    --user-message-bubble-text: var(--t8);
+
+    --card-border-radius: 12px;
+    --card-padding: 12px 15px;
+    --card-background: var(--page);
+    --card-background-hover: var(--t1);
+    --card-shadow: 0 0 0 var(--border-width) var(--border-color);
+    --card-shadow-hover: 0 0 0 var(--border-width) var(--t5);
+    
+    --sidebar-border-color: var(--border-color);
+    --sidebar-section-label-color: rgba(0, 0, 0, 0.5);
+    --sidebar-padding-left: 12px;
+    
+    --menu-background: var(--z0);
+    --menu-shadow: 0 0 0 var(--border-width) var(--border-color), 0px 13px 8px 0px rgba(0, 0, 0, 0.01), 0px 6px 6px 0px rgba(0, 0, 0, 0.01), 0px 1px 3px 0px rgba(0, 0, 0, 0.01);
+    
+    
+    --search-input-background: var(--t3);
+    --search-input-background-focus: var(--t4);
+    --workspace-list-divider-color: var(--t3);
+}

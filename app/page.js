@@ -1,95 +1,63 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Icon } from "./components/icon";
+import { Button } from "./components/button";
+import { diatype } from "./fonts/fonts";
+import { presets } from "./data/presets";
+import PresetCard from "./components/preset-card";
+import Promptbar from "./components/promptbar";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	const cards = [presets[presets.length - 3], presets[presets.length - 1], presets[presets.length - 2]];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<div className={styles.page}>
+			<header className={styles.header}>
+				<div className={styles.headerLeft}>
+					<Button>
+						<Icon name={"sidebar-left"} />
+					</Button>
+
+					<Button>
+						<Icon name={"add"} />
+					</Button>
+				</div>
+				<div className={styles.headerRight}>
+					<Button>
+						<Icon name={"clock"} />
+					</Button>
+				</div>
+			</header>
+			<main className={styles.main}>
+				<div className={styles.home}>
+					<Image src={"/logos/spectral.png"} alt={"Spectral"} width={64} height={64} />
+					<h2 className={`${diatype.className}`}>Spectral</h2>
+					<div className={styles.meta}>
+						<Button>
+							<Icon name={"opportunity"} size={20} />
+							Spectral – Closed Lost
+						</Button>
+						<Button>
+							<Image src={"/avatars/owen-tanada.jpg"} alt={"Owen Tanada"} width={18} height={18} />
+							Owen Tanada
+						</Button>
+					</div>
+				</div>
+			</main>
+			<footer className={styles.bottom}>
+				<div className={styles.cards}>
+					{cards.map(o => (
+						<PresetCard key={o.id} heading={o.label} body={o.info} accentColor={o.accentColor} icon={o.icon} />
+					))}
+				</div>
+
+				<Promptbar
+				//input={input}
+				//handleInputChange={handleInputChange}
+				//handleSubmit={handleSubmit}
+				//handleMenuSelection={handlePresetSelection}
+				/>
+			</footer>
+		</div>
+	);
 }

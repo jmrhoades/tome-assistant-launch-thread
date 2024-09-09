@@ -1,0 +1,64 @@
+.PromptBar {
+    display: flex;
+    align-items: end;
+    /* justify-content: end; */
+    width: 100%;
+    max-width: var(--prompt-bar-max-width);
+    margin: 0 auto;
+    background-color: var(--promptbar-background);
+    border-radius: var(--promptbar-border-radius);
+    box-shadow: var(--promptbar-shadow);
+    min-height: 52px;
+
+}
+
+.SendButton {
+    padding: 6px;
+    border-radius: 6px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    color: var(--t7);
+    background-color: var(--t1);
+}
+
+.SendButton:disabled {
+    color: var(--t6);
+}
+
+.SendButton:hover {
+    background-color: var(--t2);
+}
+
+
+.TextAreaWrap {
+    flex: 1 0 0%;
+    display: grid;
+}
+
+.TextAreaWrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-replicated-value) " ";
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+}
+
+.TextAreaWrap textarea {
+    overflow: hidden;
+}
+
+.TextAreaWrap textarea,
+.TextAreaWrap::after {
+    padding: var(--promptbar-padding);
+    font-size: 16px;
+    line-height: 22px;
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+    color: var(--t9);
+}
+
+.TextAreaWrap textarea::placeholder {
+    color: var(--promptbar-placeholder);
+}
+

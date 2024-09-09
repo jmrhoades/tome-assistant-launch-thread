@@ -1,0 +1,6 @@
+input,
+textarea {
+  all: unset;
+  font: inherit;
+  color: inherit;
+}

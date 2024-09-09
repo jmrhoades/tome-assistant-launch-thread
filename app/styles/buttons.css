@@ -1,0 +1,27 @@
+:root {
+    --button-hover-background: var(--t2);
+}
+
+button {
+    all: unset;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 4px 5px;
+    gap: 6px;
+    border-radius: 6px;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--button-hover-background);
+}
+
+button:active {
+    transform: scale(0.95);
+    color: var(--t9);
+}
