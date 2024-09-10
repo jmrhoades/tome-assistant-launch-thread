@@ -6,6 +6,7 @@ import Button from "./button";
 import Add from "../icons/add";
 import SidebarLeft from "../icons/sidebar-left";
 import Clock from "../icons/clock";
+import History from "../icons/history";
 
 export default function Toolbar() {
 	return (
@@ -21,7 +22,7 @@ export default function Toolbar() {
 			</div>
 			<div className={styles.headerRight}>
 				<Button>
-					<Clock size={24} />
+                    <History size={24} />
 				</Button>
 			</div>
 		</header>

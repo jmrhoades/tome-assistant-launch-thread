@@ -22,6 +22,7 @@
     color: var(--t8);
     border-radius: 12px;
     box-shadow: var(--menu-shadow);
+    ;
 }
 
 .MenuItem {

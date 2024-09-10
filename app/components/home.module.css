@@ -8,6 +8,7 @@
     grid-row: 1;
     grid-column: 1;
     height:  100svh;
+    padding-bottom: 180px;
   }
   
   .home h2 {

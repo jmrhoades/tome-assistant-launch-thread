@@ -21,7 +21,6 @@ export default function Promptbar({ value = "", handleSubmit, handleMenuSelectio
 
 	return (
 		<div className={styles.PromptBar} ref={ref}>
-			
 			<PromptbarMenu handleMenuSelection={handleMenuSelection} />
 
 			<form onSubmit={handleSubmit} className={styles.TextAreaWrap}>
@@ -32,8 +31,10 @@ export default function Promptbar({ value = "", handleSubmit, handleMenuSelectio
 					onChange={handleInputChange}
 					onKeyDown={e => {
 						if (e.key === "Enter" && e.shiftKey == false) {
-							handleSubmit();
+							handleSubmit(input);
+							setInput("");
 							e.target.parentNode.dataset.replicatedValue = "";
+							e.target.blur();
 							e.preventDefault();
 						}
 					}}
@@ -42,11 +43,18 @@ export default function Promptbar({ value = "", handleSubmit, handleMenuSelectio
 					}}
 				/>
 			</form>
-			
-			<button className={styles.SendButton} disabled={input.trim().length === 0}>
+
+			<button
+				className={styles.SendButton}
+				disabled={input.trim().length === 0}
+				onClick={e => {
+					handleSubmit(input);
+					setInput("");
+					e.target.parentNode.dataset.replicatedValue = "";
+				}}
+			>
 				<ArrowUp size={24} />
 			</button>
-
 		</div>
 	);
 }

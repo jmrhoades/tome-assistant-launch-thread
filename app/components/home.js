@@ -14,11 +14,11 @@ export default function Home({ state }) {
 		<motion.div
 			className={styles.home}
 			initial={{ opacity: 0 }}
-			animate={{ opacity: state === "init" ? 1 : 0 }}
-			transition={{ duration: 0.5 }}
+			animate={{ opacity: state === 0 ? 1 : 0 }}
+			transition={{ duration: 0.25 }}
 
 		style={{
-            pointerEvents: state === "init" ? "auto" : "none"
+            pointerEvents: state === 0 ? "auto" : "none"
         }}>
 			<Image src={"/logos/spectral.png"} alt={"Spectral"} width={64} height={64} />
 			<h2 className={`${diatype.className}`}>Spectral</h2>

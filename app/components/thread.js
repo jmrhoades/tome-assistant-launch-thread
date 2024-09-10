@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
@@ -10,19 +11,32 @@ import { diatype, diatypeMono } from "../fonts/fonts";
 import StatusHoverCard from "./status-hover-card";
 
 export default function Thread({ state }) {
+	const scrollRef = React.useRef();
+	const lastItemRef = React.useRef();
+	const followupRef = React.useRef();
+
+	React.useEffect(() => {
+		if (state === 2) {
+			followupRef.current.scrollIntoView({
+				block: "start",
+				behavior: "smooth",
+			});
+		}
+	}, [state]);
+
 	return (
 		<div
 			className={`${diatype.className} ${styles.thread} ${diatypeMono.variable}`}
 			style={{
-				pointerEvents: state !== "init" ? "auto" : "none",
+				pointerEvents: state > 0 ? "auto" : "none",
 			}}
 		>
-			<div className={styles.threadscroller}>
+			<div className={styles.threadscroller} ref={scrollRef}>
 				<motion.div
 					className={styles.threadcontent}
 					initial={{ opacity: 0 }}
-					animate={{ opacity: state !== "init" ? 1 : 0 }}
-					transition={{ duration: 0.5 }}
+					animate={{ opacity: state > 0 ? 1 : 0 }}
+					transition={{ duration: 0.25 }}
 				>
 					<div className={styles.user}>Company Overview</div>
 
@@ -123,48 +137,62 @@ export default function Thread({ state }) {
 						</div>
 					</div>
 
-					<div className={styles.user}>what’s the best way to reengage?</div>
+					<motion.div
+						ref={followupRef}
+						className={styles.followup}
+						style={{
+							height: state === 2 ? "auto" : 0,
+						}}
+						initial={false}
+						animate={{
+							opacity: state === 2 ? 1 : 0,
+						}}
+						transition={{ duration: 0.25 }}
+					>
+						<div className={styles.user}>what’s the best way to reengage?</div>
 
-					<div className={styles.system}>
-						<p>
-							You should reach out to Claire Emerson, VP of Finance. She is a recent hire on the finance team is
-							likely attached to Spectral’s Operational Efficiency initiative. She could be a crucial
-							decision-maker or influencer. Considering referencing the Senzo case study, given they operate in
-							the same industry.
-						</p>
-					</div>
+						<div className={styles.system}>
+							<p>
+								You should reach out to Claire Emerson, VP of Finance. She is a recent hire on the finance team
+								is likely attached to Spectral’s Operational Efficiency initiative. She could be a crucial
+								decision-maker or influencer. Considering referencing the Senzo case study, given they operate
+								in the same industry.
+							</p>
+						</div>
 
-					<div className={styles.email}>
-						<div className={styles.header}>
-							<div className={styles.contact}>
-								<Image src={"/avatars/claire-emerson.jpg"} alt={"Claire Emerson"} width={44} height={44} />
-								<span className={styles.details}>
-									<h6>Claire Emerson</h6>
-									<p>Vice President, Finance</p>
-								</span>
+						<div className={styles.email}>
+							<div className={styles.header}>
+								<div className={styles.contact}>
+									<Image src={"/avatars/claire-emerson.jpg"} alt={"Claire Emerson"} width={44} height={44} />
+									<span className={styles.details}>
+										<h6>Claire Emerson</h6>
+										<p>Vice President, Finance</p>
+									</span>
+								</div>
+								<div className={styles.buttons}>
+									<button>Edit</button>
+									<button>Copy</button>
+								</div>
 							</div>
-							<div className={styles.buttons}>
-								<button>Edit</button>
-								<button>Copy</button>
+							<div className={styles.content}>
+								<p>Hi Claire,</p>
+								<p>
+									I hope this message finds you well. Last year we had a few conversations about how we could
+									support Spectral’s financial and operational goals.
+								</p>
+								<p>
+									Since we last spoke, Prism has built a number of a new features that help finance teams
+									automate manual processes and increase accuracy of financial reporting for year end.
+								</p>
+								<p>
+									Would you be open to a brief call next week to explore how Prism can better support your team
+									and strategic initiatives?
+								</p>
+								<p>Best regards, Owen</p>
 							</div>
 						</div>
-						<div className={styles.content}>
-							<p>Hi Claire,</p>
-							<p>
-								I hope this message finds you well. Last year we had a few conversations about how we could
-								support Spectral’s financial and operational goals.
-							</p>
-							<p>
-								Since we last spoke, Prism has built a number of a new features that help finance teams automate
-								manual processes and increase accuracy of financial reporting for year end.
-							</p>
-							<p>
-								Would you be open to a brief call next week to explore how Prism can better support your team
-								and strategic initiatives?
-							</p>
-							<p>Best regards, Owen</p>
-						</div>
-					</div>
+						{/* <div className={styles.spacer} ref={lastItemRef} /> */}
+					</motion.div>
 				</motion.div>
 			</div>
 		</div>
