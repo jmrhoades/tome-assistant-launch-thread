@@ -7,6 +7,7 @@ import Clock from "../icons/clock";
 import XInCircle from "../icons/x-in-circle";
 import styles from "./thread.module.css";
 import { diatype, diatypeMono } from "../fonts/fonts";
+import StatusHoverCard from "./status-hover-card";
 
 export default function Thread({ state }) {
 	return (
@@ -28,10 +29,7 @@ export default function Thread({ state }) {
 					<div className={styles.system}>
 						<h2>Spectral Account Overview</h2>
 						<div className={styles.meta}>
-							<button>
-								<XInCircle size={18} />
-								Closed Lost
-							</button>
+							<StatusHoverCard />
 							<button>
 								<Clock size={18} /> 9 months ago
 							</button>

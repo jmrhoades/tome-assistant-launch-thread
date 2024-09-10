@@ -34,6 +34,8 @@ export default function Index() {
 			</main>
 
 			<footer className={styles.bottom}>
+
+        {state === "init" && (
 				<motion.div
 					className={styles.cards}
 					initial={{ opacity: 0 }}
@@ -51,6 +53,7 @@ export default function Index() {
 						/>
 					))}
 				</motion.div>
+        )}
 
 				<Promptbar
 				//input={input}

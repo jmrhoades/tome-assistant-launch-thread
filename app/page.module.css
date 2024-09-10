@@ -29,6 +29,8 @@
   padding-top: 2px;
 
   z-index: 2;
+
+  background-color: var(--z0);
 }
 
 .bottom .cards {
