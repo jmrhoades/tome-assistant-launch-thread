@@ -13,6 +13,7 @@ import StatusHoverCard from "./status-hover-card";
 export default function Thread({ state }) {
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
+    const emailContentRef = React.useRef();
 
 	const variants = {
 		visible: i => ({
@@ -142,6 +143,24 @@ export default function Thread({ state }) {
 
 	const emailPara5Start = emailPara4End + delayIncrement * 1;
 	const emailPara5End = emailPara5Start + emailP5Words.length * textIncrement;
+
+    const [emailFocused, setEmailFocused] = React.useState(false);
+
+    const onEditClick = e => {
+        emailContentRef.current.focus();
+        e.preventDefault();
+    }
+
+    const onEmailContentFocus = e => {
+        setEmailFocused(true)
+        e.preventDefault();
+    }
+
+    const onEmailContentBlur = e => {
+        setEmailFocused(false)
+        e.preventDefault();
+    }
+
 
 	React.useEffect(() => {
 		delay.current = 0;
@@ -446,6 +465,8 @@ export default function Thread({ state }) {
 										animate={phase2}
 										variants={variants}
 										initial={false}
+                                        onClick={onEditClick}
+                                        disabled={emailFocused}
 									>
 										Edit
 									</motion.button>
@@ -459,7 +480,7 @@ export default function Thread({ state }) {
 									</motion.button>
 								</div>
 							</div>
-							<div className={styles.content}>
+							<div className={styles.content} contentEditable={true} ref={emailContentRef} onFocus={onEmailContentFocus} onBlur={onEmailContentBlur}>
 								<p>
 									{emailP1Words.map((w, i) => (
 										<motion.span
