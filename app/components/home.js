@@ -15,7 +15,7 @@ export default function Home({ state }) {
 			className={styles.home}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: state === 0 ? 1 : 0 }}
-			transition={{ duration: 0.25 }}
+			transition={{ duration: 0.1 }}
 
 		style={{
             pointerEvents: state === 0 ? "auto" : "none"
