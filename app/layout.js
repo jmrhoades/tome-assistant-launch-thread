@@ -4,6 +4,7 @@ import "./styles/colors.css";
 import "./styles/buttons.css";
 import "./styles/inputs.css";
 import "./styles/ui.css";
+import "./styles/thread.css";
 
 import { inter } from "./fonts/fonts";
 

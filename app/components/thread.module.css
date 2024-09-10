@@ -1,0 +1,245 @@
+.thread {
+    grid-row: 1;
+    grid-column: 1;
+    overflow: hidden;
+    height: 100%;
+    font-family: var(--font-diatype-regular);
+    font-size: 16px;
+    line-height: 165%;
+    color: var(--assistant-message-text);
+}
+
+.threadscroller {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.threadcontent {
+    max-width: var(--assistant-message-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--message-spacing);
+    padding: 64px 12px 180px;
+}
+
+.user {
+    max-width: min(75%, 540px);
+    border-radius: 12px;
+    color: var(--t9);
+    padding: 11px 16px;
+    margin-left: auto;
+    background-color: var(--user-message-background);
+    color: var(--user-message-text);
+    line-height: 22px;
+}
+
+.system {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.system .title {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.system h2 {
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    color: var(--t9);
+    padding-bottom: 8px;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+}
+
+.meta>button {
+    padding: 6px 12px;
+    padding-left: 10px;
+    gap: 6px;
+    border: 1px solid var(--t2);
+    border-radius: 12px;
+    color: var(--t7);
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.system h3 {
+    padding-top: 12px;
+    color: var(--t9);
+    font-weight: 500;
+}
+
+.system h3:has(+ .contacts) {
+    padding-top: 24px;
+}
+
+.refgroup {
+    padding-left: 6px;
+    display: inline-flex;
+    gap: 4px;
+    vertical-align: middle;
+}
+
+.ref {
+    font-size: 11px;
+    line-height: 11px;
+    font-family: var(--diatype-mono);
+    padding: 4px 5px 3px;
+    border-radius: 4px;
+    background-color: var(--z1);
+    min-width: 16px;
+    text-align: center;
+}
+
+.ref:hover {
+    background-color: var(--z2);
+}
+
+.contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px
+}
+
+.contacts button {
+    background-color: rgba(0, 0, 0, 0.04);
+    outline: 0.5px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 16px 16px;
+    gap: 12px;
+    align-items: start;
+}
+
+.contacts button img {
+    border-radius: 50%;
+}
+
+.contacts .details h6 {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+.contacts .details p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.sourcesrow {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.sources {
+    padding: 6px 4px;
+    padding-right: 7px;
+    border-radius: 4px;
+    outline: 0.5px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sources .pile {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0 2px;
+}
+
+.sources .pile img {
+    border-radius: 2px;
+}
+
+.sources .label {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.email {
+    background-color: rgba(0, 0, 0, 0.04);
+    outline: 0.5px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 16px 20px;
+    padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.email .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.email .header .contact {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.email .header .contact .details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+}
+
+.email .header .contact .details h6 {
+    font-weight: 500;
+    line-height: 1;
+    color: var(--t9);
+}
+
+.email .header .contact .details p {
+    line-height: 1;
+    color: var(--t7);
+}
+
+.email .header .contact img {
+    border-radius: 50%;
+}
+
+.email .header .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.email .header .buttons button {
+    min-width: 72px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    background-color: var(--z0);
+    justify-content: center;
+}
+
+.email .header .buttons button:hover {
+    background-color: var(--z2);
+}
+
+.email .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 18px;
+}

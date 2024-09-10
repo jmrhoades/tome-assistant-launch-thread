@@ -1,21 +1,21 @@
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-ui",
+});
 
-const inter = Inter({ 
-    subsets: ["latin"], 
-    variable: "--font-ui",
-  });
-  
-  const diatype = localFont({
-      src: "./ABCDiatypeVariable.woff2",
-      variable: "--font-diatype",
-      weight: "100 900",
-  });
-  const diatypeMono = localFont({
-      src: "./ABCDiatypeMonoVariable.woff2",
-      variable: "--font-diatype-mono",
-      weight: "100 900",
-  });
+const diatype = localFont({
+	src: "./ABCDiatypeVariable.woff2",
+	weight: "100 900",
+    variable: "--font-diatype",
+});
 
-export { inter, diatype, diatypeMono }
+const diatypeMono = localFont({
+	src: "./ABCDiatypeMonoVariable.woff2",
+	weight: "100 900",
+    variable: "--font-diatype-mono",
+});
+
+export { inter, diatype, diatypeMono };

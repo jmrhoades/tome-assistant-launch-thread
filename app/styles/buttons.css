@@ -13,7 +13,6 @@ button {
     padding: 4px 5px;
     gap: 6px;
     border-radius: 6px;
-    transition: all 0.1s ease-out;
     cursor: pointer;
 }
 
@@ -22,6 +21,11 @@ button:hover {
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: scale(0.99);
     color: var(--t9);
+}
+
+a,
+button {
+    transition: all 0.1s ease-out;
 }

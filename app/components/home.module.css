@@ -1,0 +1,41 @@
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    grid-row: 1;
+    grid-column: 1;
+    height:  100svh;
+  }
+  
+  .home h2 {
+    font-size: 50px;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    color: var(--t9);
+  }
+  
+  .home .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .home .meta div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .home .meta button {
+    padding-right: 7px;
+  }
+  
+  .home .meta button:active {
+    transform: scale(.99);
+  }
+  
+  .home .meta button img {
+    border-radius: 50%;
+  }

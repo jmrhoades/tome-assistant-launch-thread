@@ -1,0 +1,19 @@
+:root {
+    --message-spacing: 24px;
+    
+    --message-content-spacing: .5em;
+    --message-list-item-spacing: .5em;
+
+    --user-message-background: var(--z1);
+    --user-message-text: var(--t9);
+    
+    --assistant-message-text: rgba(0, 0, 0, 0.85);
+    --assistant-message-marker-color: var(--t9);
+    --assistant-message-marker-color-secondary: var(--t7);
+    --assistant-message--reference-link-background: var(--t2);
+}
+
+[data-theme='dark'] {
+    --user-message-background: var(--z2);
+    --assistant-message-marker-color: var(--t7);
+}
