@@ -26,13 +26,13 @@ a {
   text-decoration: none;
 }
 
-* {
+/* * {
   caret-color: var(--accent-color);
 }
 
 ::selection {
   background: var(--highlight-color);
-}
+} */
 
 .icon {
   display: block;

@@ -6,8 +6,7 @@ import "./styles/inputs.css";
 import "./styles/ui.css";
 import "./styles/thread.css";
 
-import { inter } from "./fonts/fonts";
-
+import { inter, diatype } from "./fonts/fonts";
 
 export const metadata = {
 	title: "Spectral",
@@ -17,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className}`}>{children}</body>
+			<body className={`${inter.className} ${diatype.variable}`}>{children}</body>
 		</html>
 	);
 }

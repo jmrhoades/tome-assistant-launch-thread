@@ -131,6 +131,7 @@
 
 .contacts button img {
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .contacts .details h6 {
@@ -169,7 +170,7 @@
 }
 
 .sources .pile img {
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .sources .label {
