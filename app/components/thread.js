@@ -19,13 +19,14 @@ export default function Thread({ state }) {
 			opacity: 1,
 			transition: {
 				delay: i,
-                duration: 0.2,
+				duration: 0.2,
 			},
 		}),
 		hidden: { opacity: 0 },
 	};
 
-	const currentVariant = state > 0 ? "visible" : "hidden";
+	const phase1 = state > 0 ? "visible" : "hidden";
+	const phase2 = state > 1 ? "visible" : "hidden";
 
 	const delay = React.useRef(0);
 	const nextDelay = () => {
@@ -48,6 +49,11 @@ export default function Thread({ state }) {
 		"Spectral’s business model is built around providing cutting-edge banking solutions, including personal banking, commercial lending, and wealth management services. The bank generates revenue through a diverse range of financial products, including interest income, service fees, and investment banking activities.";
 
 	const p3Words = p3.split(" ");
+
+	const p4 =
+		"You should reach out to Claire Emerson, VP of Finance. She is a recent hire on the finance team is likely attached to Spectral’s Operational Efficiency initiative. She could be a crucial decision-maker or influencer. Considering referencing the Senzo case study, given they operate in the same industry.";
+
+	const p4Words = p4.split(" ");
 
 	const contacts = [
 		{
@@ -76,9 +82,27 @@ export default function Thread({ state }) {
 		},
 	];
 
+	const emailP1 = "Hi Claire,";
+	const emailP1Words = emailP1.split(" ");
+
+	const emailP2 =
+		"I hope this message finds you well. Last year we had a few conversations about how we could support Spectral’s financial and operational goals.";
+	const emailP2Words = emailP2.split(" ");
+
+	const emailP3 =
+		"Since we last spoke, Prism has built a number of a new features that help finance teams automate manual processes and increase accuracy of financial reporting for year end.";
+	const emailP3Words = emailP3.split(" ");
+
+	const emailP4 =
+		"Would you be open to a brief call next week to explore how Prism can better support your team and strategic initiatives?";
+	const emailP4Words = emailP4.split(" ");
+
+	const emailP5 = "Best regards, Owen";
+	const emailP5Words = emailP5.split(" ");
+
 	const delayIncrement = 0.075;
 	const textIncrement = 0.03;
-    const cardIncrement = 0.15;
+	const cardIncrement = 0.15;
 
 	const headingStart = delayIncrement * 8;
 
@@ -93,9 +117,31 @@ export default function Thread({ state }) {
 
 	const contactsStart = para3End + delayIncrement * 1;
 
-    const contactsCardsStart = contactsStart + delayIncrement * 4;
-    const contactsCardsEnd = contactsCardsStart + contacts.length * cardIncrement;
+	const contactsCardsStart = contactsStart + delayIncrement * 4;
+	const contactsCardsEnd = contactsCardsStart + contacts.length * cardIncrement;
 
+	const phase2Start = delayIncrement * 2;
+	const para4Start = phase2Start + delayIncrement * 2;
+
+	const emailStart = para4Start + p4Words.length * textIncrement + delayIncrement * 2;
+
+	const emailHeaderStart = emailStart + delayIncrement * 1;
+	const emailHeaderEnd = emailHeaderStart + delayIncrement * 4;
+
+	const emailPara1Start = emailHeaderEnd + delayIncrement * 5;
+	const emailPara1End = emailPara1Start + emailP1Words.length * textIncrement;
+
+	const emailPara2Start = emailPara1End + delayIncrement * 1;
+	const emailPara2End = emailPara2Start + emailP2Words.length * textIncrement;
+
+	const emailPara3Start = emailPara2End + delayIncrement * 1;
+	const emailPara3End = emailPara3Start + emailP3Words.length * textIncrement;
+
+	const emailPara4Start = emailPara3End + delayIncrement * 1;
+	const emailPara4End = emailPara4Start + emailP4Words.length * textIncrement;
+
+	const emailPara5Start = emailPara4End + delayIncrement * 1;
+	const emailPara5End = emailPara5Start + emailP5Words.length * textIncrement;
 
 	React.useEffect(() => {
 		delay.current = 0;
@@ -119,7 +165,7 @@ export default function Thread({ state }) {
 					<motion.div
 						className={styles.user}
 						custom={delayIncrement * 1}
-						animate={currentVariant}
+						animate={phase1}
 						variants={variants}
 						initial={false}
 					>
@@ -128,13 +174,13 @@ export default function Thread({ state }) {
 
 					<div className={styles.system}>
 						<h2>
-							<motion.span custom={headingStart} animate={currentVariant} variants={variants} initial={false}>
+							<motion.span custom={headingStart} animate={phase1} variants={variants} initial={false}>
 								Spectral
 							</motion.span>
 							&nbsp;
 							<motion.span
 								custom={headingStart + delayIncrement * 1}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -143,7 +189,7 @@ export default function Thread({ state }) {
 							&nbsp;
 							<motion.span
 								custom={headingStart + delayIncrement * 2}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -153,7 +199,7 @@ export default function Thread({ state }) {
 						<div className={styles.meta}>
 							<motion.div
 								custom={headingStart + delayIncrement * 3}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -161,7 +207,7 @@ export default function Thread({ state }) {
 							</motion.div>
 							<motion.div
 								custom={headingStart + delayIncrement * 4}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -172,7 +218,7 @@ export default function Thread({ state }) {
 						</div>
 						<motion.h3
 							custom={headingStart + delayIncrement * 5}
-							animate={currentVariant}
+							animate={phase1}
 							variants={variants}
 							initial={false}
 						>
@@ -182,7 +228,7 @@ export default function Thread({ state }) {
 							{p1Words.map((w, i) => (
 								<motion.span
 									custom={para1Start + i * textIncrement}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									key={i}
@@ -194,7 +240,7 @@ export default function Thread({ state }) {
 							<span className={styles.refgroup}>
 								<motion.a
 									custom={para1End + delayIncrement * 1}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									href="#"
@@ -204,7 +250,7 @@ export default function Thread({ state }) {
 								</motion.a>
 								<motion.a
 									custom={para1End + delayIncrement * 2}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									href="#"
@@ -218,7 +264,7 @@ export default function Thread({ state }) {
 							{p2Words.map((w, i) => (
 								<motion.span
 									custom={para2Start + i * textIncrement}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									key={i}
@@ -230,7 +276,7 @@ export default function Thread({ state }) {
 							<span className={styles.refgroup}>
 								<motion.a
 									custom={para2End + delayIncrement * 1}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									href="#"
@@ -244,7 +290,7 @@ export default function Thread({ state }) {
 							{p3Words.map((w, i) => (
 								<motion.span
 									custom={para3Start + i * textIncrement}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									key={i}
@@ -255,7 +301,7 @@ export default function Thread({ state }) {
 							<span className={styles.refgroup}>
 								<motion.a
 									custom={para3End + delayIncrement * 1}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 									href="#"
@@ -268,7 +314,7 @@ export default function Thread({ state }) {
 						<h3>
 							<motion.span
 								custom={contactsStart + delayIncrement * 1}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -276,7 +322,7 @@ export default function Thread({ state }) {
 							</motion.span>
 							<motion.span
 								custom={contactsStart + delayIncrement * 2}
-								animate={currentVariant}
+								animate={phase1}
 								variants={variants}
 								initial={false}
 							>
@@ -288,7 +334,7 @@ export default function Thread({ state }) {
 								<motion.button
 									key={i}
 									custom={contactsCardsStart + cardIncrement * i}
-									animate={currentVariant}
+									animate={phase1}
 									variants={variants}
 									initial={false}
 								>
@@ -304,7 +350,7 @@ export default function Thread({ state }) {
 						<motion.div
 							className={styles.sourcesrow}
 							custom={contactsCardsEnd + delayIncrement * 1}
-							animate={currentVariant}
+							animate={phase1}
 							variants={variants}
 							initial={false}
 						>
@@ -324,56 +370,163 @@ export default function Thread({ state }) {
 						ref={followupRef}
 						className={styles.followup}
 						style={{
-							height: state === 2 ? "auto" : 0,
+							height: state > 1 ? "auto" : 0,
 						}}
-						initial={false}
-						animate={{
-							opacity: state === 2 ? 1 : 0,
-						}}
-						transition={{ duration: 0.25 }}
 					>
-						<div className={styles.user}>what’s the best way to reengage?</div>
+						<motion.div
+							custom={phase2Start}
+							animate={phase2}
+							variants={variants}
+							initial={false}
+							className={styles.user}
+						>
+							what’s the best way to reengage?
+						</motion.div>
 
 						<div className={styles.system}>
 							<p>
-								You should reach out to Claire Emerson, VP of Finance. She is a recent hire on the finance team
-								is likely attached to Spectral’s Operational Efficiency initiative. She could be a crucial
-								decision-maker or influencer. Considering referencing the Senzo case study, given they operate
-								in the same industry.
+								{p4Words.map((w, i) => (
+									<motion.span
+										custom={para4Start + i * textIncrement}
+										animate={phase2}
+										variants={variants}
+										initial={false}
+										key={i}
+									>
+										{w}{" "}
+									</motion.span>
+								))}
 							</p>
 						</div>
 
-						<div className={styles.email}>
+						<motion.div
+							className={styles.email}
+							custom={emailStart}
+							animate={phase2}
+							variants={variants}
+							initial={false}
+						>
 							<div className={styles.header}>
 								<div className={styles.contact}>
-									<Image src={"/avatars/claire-emerson.jpg"} alt={"Claire Emerson"} width={44} height={44} />
+									<motion.span
+										custom={emailHeaderStart + delayIncrement * 1}
+										animate={phase2}
+										variants={variants}
+										initial={false}
+									>
+										<Image
+											src={"/avatars/claire-emerson.jpg"}
+											alt={"Claire Emerson"}
+											width={44}
+											height={44}
+										/>
+									</motion.span>
 									<span className={styles.details}>
-										<h6>Claire Emerson</h6>
-										<p>Vice President, Finance</p>
+										<motion.h6
+											custom={emailHeaderStart + delayIncrement * 2}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+										>
+											Claire Emerson
+										</motion.h6>
+										<motion.p
+											custom={emailHeaderStart + delayIncrement * 3}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+										>
+											Vice President, Finance
+										</motion.p>
 									</span>
 								</div>
 								<div className={styles.buttons}>
-									<button>Edit</button>
-									<button>Copy</button>
+									<motion.button
+										custom={emailHeaderStart + delayIncrement * 4}
+										animate={phase2}
+										variants={variants}
+										initial={false}
+									>
+										Edit
+									</motion.button>
+									<motion.button
+										custom={emailHeaderStart + delayIncrement * 5}
+										animate={phase2}
+										variants={variants}
+										initial={false}
+									>
+										Copy
+									</motion.button>
 								</div>
 							</div>
 							<div className={styles.content}>
-								<p>Hi Claire,</p>
 								<p>
-									I hope this message finds you well. Last year we had a few conversations about how we could
-									support Spectral’s financial and operational goals.
+									{emailP1Words.map((w, i) => (
+										<motion.span
+											custom={emailPara1Start + i * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											key={i}
+										>
+											{w}{" "}
+										</motion.span>
+									))}
 								</p>
 								<p>
-									Since we last spoke, Prism has built a number of a new features that help finance teams
-									automate manual processes and increase accuracy of financial reporting for year end.
+									{emailP2Words.map((w, i) => (
+										<motion.span
+											custom={emailPara2Start + i * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											key={i}
+										>
+											{w}{" "}
+										</motion.span>
+									))}
 								</p>
 								<p>
-									Would you be open to a brief call next week to explore how Prism can better support your team
-									and strategic initiatives?
+									{emailP3Words.map((w, i) => (
+										<motion.span
+											custom={emailPara3Start + i * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											key={i}
+										>
+											{w}{" "}
+										</motion.span>
+									))}
 								</p>
-								<p>Best regards, Owen</p>
+								<p>
+									{emailP4Words.map((w, i) => (
+										<motion.span
+											custom={emailPara4Start + i * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											key={i}
+										>
+											{w}{" "}
+										</motion.span>
+									))}
+								</p>
+								<p>
+									{emailP5Words.map((w, i) => (
+										<motion.span
+											custom={emailPara5Start + i * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											key={i}
+										>
+											{w}{" "}
+										</motion.span>
+									))}
+								</p>
 							</div>
-						</div>
+						</motion.div>
 						{/* <div className={styles.spacer} ref={lastItemRef} /> */}
 					</motion.div>
 				</div>
