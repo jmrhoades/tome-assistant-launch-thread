@@ -11,6 +11,7 @@ import { diatype, diatypeMono } from "../fonts/fonts";
 import StatusHoverCard from "./status-hover-card";
 
 export default function Thread({ state }) {
+
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
 	const emailContentRef = React.useRef();
@@ -264,7 +265,7 @@ export default function Thread({ state }) {
 						variants={variants}
 						initial={false}
 					>
-						Can you share an update on Spectral?
+						Can you share the latest information on Spectral?
 					</motion.div>
 
 					<div className={styles.system}>
