@@ -184,10 +184,10 @@ export default function Thread({ state }) {
 		}
 		if (state === 2) {
 
-			followupRef.current.scrollIntoView({
-				block: "start",
-				behavior: "smooth",
-			});
+			// followupRef.current.scrollIntoView({
+			// 	block: "start",
+			// 	behavior: "smooth",
+			// });
 
 		}
 	}, [state]);
