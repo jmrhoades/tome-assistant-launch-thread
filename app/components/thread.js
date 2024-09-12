@@ -14,7 +14,9 @@ export default function Thread({ state }) {
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
 	const emailContentRef = React.useRef();
+	const emailHeightRef = React.useRef();
 	const p2MsgRef = React.useRef();
+	const threadRef = React.useRef();
 
 	const p2Ref1 = React.useRef();
 
@@ -179,31 +181,137 @@ export default function Thread({ state }) {
 		e.preventDefault();
 	};
 
+	const stops = [80, 130, 194, 288, 352, 418];
+
+	const relativeStops = [130, 158, 130];
+	const relativeTimes = [1000, 1000, 1000];
+
 	React.useEffect(() => {
 		delay.current = 0;
 		if (state === 1) {
 			scrollRef.current.scrollTop = 0;
+			animate(scrollRef.current, { y: 0 }, { duration: 0 });
 			setEmailFocused(false);
 			emailContentRef.current.blur();
 		}
 		if (state === 2) {
+			const threadRect = threadRef.current.getBoundingClientRect();
 			const scrollRect = scrollRef.current.getBoundingClientRect();
 			const scrollHeight = scrollRect.height;
 			const contentHeight = scrollRef.current.scrollHeight;
 			const scrollTop = scrollRef.current.scrollTop;
-
 			const msgRect = p2MsgRef.current.getBoundingClientRect();
 			const msgBottom = msgRect.bottom;
 
 			//const bottomOffset = window.innerHeight;
 
-			const scrollY1 = msgBottom - scrollHeight - scrollTop + 100;
-			if (scrollY1 > 0) {
-				animate(scrollTop, scrollY1, {
-					onUpdate: latest => (scrollRef.current.scrollTop = latest),
-				});
-			}
+			// First scroll to bottom of message
+			let scrollY = msgBottom - scrollHeight - scrollTop + 100;
+			let scrollDelay = 100;
 
+			const scrollStops = [scrollTop, scrollY, scrollY + 124, scrollY + 124 + 148, scrollY + 124 + 148 + 80];
+			const scrollStart = [0, 1000, 1500, 2000, 2500, 3000];
+
+			const yStop1 = msgBottom - threadRect.bottom - 40;
+			const yStops = [yStop1];
+			const yDelays = [0];
+
+			const dur = 0.2;
+			const sequence = [
+				[scrollRef.current, { y: yStop1 }, { duration: dur }],
+				[scrollRef.current, { y: yStop1 - 26 }, { duration: dur, delay: 0.2 }],
+				[scrollRef.current, { y: yStop1 - 26 * 2 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 26 * 3 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 }, { duration: dur, delay: 0.1 }],
+
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 }, { duration: dur, delay: 0.3 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 - 66 }, { duration: dur, delay: 0.2 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 - 66 - 28 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 }, { duration: dur, delay: 0.2 }],
+				[scrollRef.current, { y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 - 28 }, { duration: dur, delay: 0.1 }],
+				[
+					scrollRef.current,
+					{ y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 - 28 - 28 },
+					{ duration: dur, delay: 0.1 },
+				],
+				[
+					scrollRef.current,
+					{ y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 - 28 - 28 - 38 },
+					{ duration: dur, delay: 0.3 },
+				],
+				[
+					scrollRef.current,
+					{ y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 - 28 - 28 - 38 - 28 },
+					{ duration: dur, delay: 0.1 },
+				],
+				[
+					scrollRef.current,
+					{ y: yStop1 - 26 * 4 - 112 - 66 - 28 - 28 - 34 - 28 - 28 - 38 - 28 - 66},
+					{ duration: dur, delay: 0.2 },
+				],
+			];
+
+			animate(sequence);
+
+			const heightSequence = [
+				[emailHeightRef.current, { height: 74 }, { duration: dur, delay: 1.8 }],
+				[emailHeightRef.current, { height: 140 }, { duration: dur, delay: 0.2 }],
+				[emailHeightRef.current, { height: 168 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 196 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 230 }, { duration: dur, delay: 0.2 }],
+				[emailHeightRef.current, { height: 258 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 286 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 324 }, { duration: dur, delay: 0.3 }],
+				[emailHeightRef.current, { height: 352 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.2 }],
+			];
+
+			animate(heightSequence);
+
+			/*
+			for (let i = 0; i < yStops.length; i++) {
+				setTimeout(() => {
+					
+					
+					// animate(scrollStops[i - 1], scrollStops[i], {
+					// 	onUpdate: latest => (scrollRef.current.scrollTop = latest),
+					// });
+				
+					animate(scrollRef.current, {y:yStops[i]}, { duration: 0.2 });
+
+				}, yDelays[i]);
+			}
+			*/
+
+			/*
+			if (scrollY > 0) {
+				setTimeout(() => {
+					animate(scrollTop, scrollY, {
+						onUpdate: latest => (scrollRef.current.scrollTop = latest),
+					});
+
+					// animate(scrollRef.current, {y:-scrollY});
+				}, scrollDelay);
+			}
+			*/
+
+			/*
+			// Message build on
+			relativeStops.forEach((s, i) => {
+				const delay = scrollDelay + relativeTimes[i];
+
+				setTimeout(() => {
+					animate(scrollY, scrollY + relativeStops[i], {
+						onUpdate: latest => (scrollRef.current.scrollTop = latest),
+					});
+				}, delay);
+				scrollY += relativeStops[i];
+				scrollDelay += relativeTimes[i];
+			});
+			*/
+
+			/*
 			const scrollY2 = scrollY1 + 124;
 			const scrollY2T = 1000;
 			setTimeout(() => {
@@ -219,8 +327,6 @@ export default function Thread({ state }) {
 					onUpdate: latest => (scrollRef.current.scrollTop = latest),
 				});
 			}, scrollY3T);
-
-			
 
 			const scrollY4 = scrollY3 + 80;
 			const scrollY4T = scrollY3T + 500;
@@ -270,6 +376,7 @@ export default function Thread({ state }) {
 			// });
 
 			//animate(scrollRef.current, {y:-100});
+			*/
 		}
 	}, [state]);
 
@@ -302,6 +409,7 @@ export default function Thread({ state }) {
 			style={{
 				pointerEvents: state > 0 ? "auto" : "none",
 			}}
+			ref={threadRef}
 		>
 			<div className={styles.threadscroller} ref={scrollRef}>
 				<div className={styles.threadcontent}>
@@ -545,17 +653,12 @@ export default function Thread({ state }) {
 
 						<motion.div
 							className={styles.email}
-							// custom={emailStart}
-							// animate={phase2}
-							// variants={variants}
-							// initial={false}
+							custom={emailStart}
+							animate={phase2}
+							variants={variants}
+							initial={false}
 						>
-							<motion.div
-								className={styles.emailcontent}
-								animate={phase2}
-								variants={phase2EmailBg}
-								initial={false}
-							>
+							<motion.div className={styles.emailcontent} ref={emailHeightRef}>
 								<div className={styles.header}>
 									<div className={styles.contact}>
 										<motion.span

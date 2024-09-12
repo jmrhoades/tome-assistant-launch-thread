@@ -10,8 +10,9 @@
 }
 
 .threadscroller {
-    overflow-y: auto;
-    height: 100%;
+    /* overflow-y: auto; */
+    /* height: 100%; */
+    min-height: min-content;
 }
 
 .threadcontent {
@@ -192,6 +193,7 @@
     position: absolute;
     inset: 0;
     overflow: clip;
+    height: 0;
 
     padding: 16px 20px;
     display: flex;
