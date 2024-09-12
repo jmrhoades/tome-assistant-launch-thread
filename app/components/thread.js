@@ -41,25 +41,26 @@ export default function Thread({ state }) {
 
 	const phase2 = state > 1 ? "visible" : "hidden";
 
-	const delay = React.useRef(0);
-	const nextDelay = () => {
-		let newDelay = delay.current;
-		delay.current = newDelay + 0.2;
-		return newDelay;
-	};
+	const h1 = "About Spectral";
+	const h1Words = h1.split(" ");
 
 	const p1 =
-		"Spectral is a premier financial institution that offers innovative banking and financial services to individuals and businesses globally. Established in 2009, Spectral has grown to become a trusted name in the banking sector, with headquarters in New York City, New York, and London, United Kingdom.";
-
+		"Spectral is a global financial institution that offers banking and financial services to individuals and businesses. Established in 2009, Spectral has grown to become a trusted name in the banking sector, with headquarters in New York City and London. Spectral employs over 10,000 people and reported $4.2B in revenue for fiscal year 2023.";
 	const p1Words = p1.split(" ");
 
+	const h2 = "Account History";
+	const h2Words = h2.split(" ");
+
 	const p2 =
-		"As of August 2024, Spectral employs over 10,000 people across its international offices. The bank reported $4.2 billion in revenue for 2023, demonstrating robust year-over-year growth.";
+		"A past employee at Prism connected with Claire Emerson (Vice President, Finance) at Spectral one year ago. The “Closed-Lost” decision is marked as “non-responsive”.";
 
 	const p2Words = p2.split(" ");
 
+	const h3 = "Relevant Updates";
+	const h3Words = h3.split(" ");
+
 	const p3 =
-		"Spectral’s business model is built around providing cutting-edge banking solutions, including personal banking, commercial lending, and wealth management services. The bank generates revenue through a diverse range of financial products, including interest income, service fees, and investment banking activities.";
+		"Spectral recently received a fine from the SEC for filing a reporting late. There suggests to be a clear indication of operational efficiency improvements in order to file on-time.";
 
 	const p3Words = p3.split(" ");
 
@@ -73,25 +74,25 @@ export default function Thread({ state }) {
 			name: "Nathaniel Zhao",
 			img: "/avatars/nathaniel-zhao.jpg",
 			title: "Chief Financial Officer",
-			role: "Executive buyer",
+			role: "Executive Buyer",
 		},
 		{
 			name: "Claire Emerson",
 			img: "/avatars/claire-emerson.jpg",
 			title: "Vice President, Finance",
-			role: "Decision maker",
+			role: "Champion",
 		},
 		{
 			name: "Marcus Blackwell",
 			img: "/avatars/marcus-blackwell.jpg",
 			title: "Director, Commercial Banking",
-			role: "Champion",
+			role: "Key Influencer",
 		},
 		{
 			name: "Samantha Patel",
 			img: "/avatars/samantha-patel.jpg",
 			title: "Director, Financial Planning",
-			role: "Champion",
+			role: "Key Influencer",
 		},
 	];
 
@@ -119,13 +120,19 @@ export default function Thread({ state }) {
 
 	const headingStart = delayIncrement * 8;
 
-	const para1Start = headingStart + delayIncrement * 5;
+	const h1Start = headingStart + delayIncrement * 5;
+
+	const para1Start = h1Start + h1Words.length * textIncrement;
 	const para1End = para1Start + p1Words.length * textIncrement;
 
-	const para2Start = para1End + delayIncrement * 2;
+	const h2Start = para1End + delayIncrement;
+
+	const para2Start = h2Start + h2Words.length * textIncrement;
 	const para2End = para2Start + p2Words.length * textIncrement;
 
-	const para3Start = para2End + delayIncrement * 1;
+	const h3Start = para2End + delayIncrement;
+
+	const para3Start = h3Start + h3Words.length * textIncrement;
 	const para3End = para3Start + p3Words.length * textIncrement;
 
 	const contactsStart = para3End + delayIncrement * 1;
@@ -181,13 +188,7 @@ export default function Thread({ state }) {
 		e.preventDefault();
 	};
 
-	const stops = [80, 130, 194, 288, 352, 418];
-
-	const relativeStops = [130, 158, 130];
-	const relativeTimes = [1000, 1000, 1000];
-
 	React.useEffect(() => {
-		delay.current = 0;
 		if (state === 1) {
 			scrollRef.current.scrollTop = 0;
 			animate(scrollRef.current, { y: 0 }, { duration: 0 });
@@ -263,13 +264,13 @@ export default function Thread({ state }) {
 						variants={variants}
 						initial={false}
 					>
-						Company Overview
+						Can you share an update on Spectral?
 					</motion.div>
 
 					<div className={styles.system}>
 						<h2>
 							<motion.span custom={headingStart} animate={phase1} variants={variants} initial={false}>
-								Spectral
+								Spectral’s
 							</motion.span>
 							&nbsp;
 							<motion.span
@@ -278,7 +279,7 @@ export default function Thread({ state }) {
 								variants={variants}
 								initial={false}
 							>
-								Account
+								Operational
 							</motion.span>
 							&nbsp;
 							<motion.span
@@ -287,7 +288,7 @@ export default function Thread({ state }) {
 								variants={variants}
 								initial={false}
 							>
-								Overview
+								Challenges
 							</motion.span>
 						</h2>
 						<div className={styles.meta}>
@@ -310,14 +311,19 @@ export default function Thread({ state }) {
 								</button>
 							</motion.div>
 						</div>
-						<motion.h3
-							custom={headingStart + delayIncrement * 5}
-							animate={phase1}
-							variants={variants}
-							initial={false}
-						>
-							Overview
-						</motion.h3>
+						<h3>
+							{h1Words.map((w, i) => (
+								<motion.span
+									custom={h1Start + i * textIncrement}
+									animate={phase1}
+									variants={variants}
+									initial={false}
+									key={i}
+								>
+									{w}{" "}
+								</motion.span>
+							))}
+						</h3>
 						<p>
 							{p1Words.map((w, i) => (
 								<motion.span
@@ -354,6 +360,19 @@ export default function Thread({ state }) {
 								</motion.a>
 							</span>
 						</p>
+						<h3>
+							{h2Words.map((w, i) => (
+								<motion.span
+									custom={h2Start + i * textIncrement}
+									animate={phase1}
+									variants={variants}
+									initial={false}
+									key={i}
+								>
+									{w}{" "}
+								</motion.span>
+							))}
+						</h3>
 						<p>
 							{p2Words.map((w, i) => (
 								<motion.span
@@ -380,6 +399,19 @@ export default function Thread({ state }) {
 								</motion.a>
 							</span>
 						</p>
+						<h3>
+							{h3Words.map((w, i) => (
+								<motion.span
+									custom={h3Start + i * textIncrement}
+									animate={phase1}
+									variants={variants}
+									initial={false}
+									key={i}
+								>
+									{w}{" "}
+								</motion.span>
+							))}
+						</h3>
 						<p>
 							{p3Words.map((w, i) => (
 								<motion.span
@@ -412,7 +444,7 @@ export default function Thread({ state }) {
 								variants={variants}
 								initial={false}
 							>
-								Opportunity{" "}
+								Relevant{" "}
 							</motion.span>
 							<motion.span
 								custom={contactsStart + delayIncrement * 2}
@@ -475,7 +507,7 @@ export default function Thread({ state }) {
 							initial={false}
 							className={styles.user}
 						>
-							what’s the best way to reengage?
+							What’s the best way to reengage?
 						</motion.div>
 
 						<div className={styles.system}>

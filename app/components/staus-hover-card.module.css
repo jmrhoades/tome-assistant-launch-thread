@@ -3,10 +3,11 @@
     padding-left: 10px;
     gap: 6px;
     border: 1px solid var(--t3);
-    border-radius: 12px;
-    color: var(--t7);
+    color: rgba(0, 0, 0, 0.6);
+    /* color: var(--t7); */
+    color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
-    line-height: 22px;
+    line-height: 24px;
 }
 
 .card {

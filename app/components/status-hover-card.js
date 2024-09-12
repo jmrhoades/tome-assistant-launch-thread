@@ -21,11 +21,11 @@ export default function StatusHoverCard({ state }) {
 				<HoverCard.Content className={styles.card} sideOffset={10} align={"start"}>
 					<section>
 						<h6>Reason</h6>
-						<p>Non-responsive</p>
+						<p>Lost to competitor</p>
 					</section>
 					<section>
 						<h6>Notes</h6>
-						<p>Contact was evaluating competitors. Stopped communication after learning about our feature set.</p>
+						<p>Contact was evaluating competitors. Stopped communication.</p>
 					</section>
 				</HoverCard.Content>
 			</HoverCard.Portal>
