@@ -206,15 +206,17 @@ export default function Thread({ state }) {
 			//const bottomOffset = window.innerHeight;
 
 			// First scroll to bottom of message
-			let scrollY = msgBottom - scrollHeight - scrollTop + 100;
-			let scrollDelay = 100;
+			
+			//let scrollY = msgBottom - scrollHeight - scrollTop + 100;
+			//let scrollDelay = 100;
+			//const scrollStops = [scrollTop, scrollY, scrollY + 124, scrollY + 124 + 148, scrollY + 124 + 148 + 80];
+			//const scrollStart = [0, 1000, 1500, 2000, 2500, 3000];
 
-			const scrollStops = [scrollTop, scrollY, scrollY + 124, scrollY + 124 + 148, scrollY + 124 + 148 + 80];
-			const scrollStart = [0, 1000, 1500, 2000, 2500, 3000];
-
-			const yStop1 = msgBottom - threadRect.bottom - 108;
-			const yStops = [yStop1];
-			const yDelays = [0];
+			
+			const bottomDistAbs = window.innerHeight - 144;
+			//const yStop1 = msgBottom - window.innerHeight + 44;
+			const yStop1 = bottomDistAbs - msgBottom < 0 ? bottomDistAbs - msgBottom : 0;
+			console.log(msgBottom,  window.innerHeight, yStop1)
 
 			const dur = 0.2;
 			const sequence = [
@@ -380,6 +382,7 @@ export default function Thread({ state }) {
 		}
 	}, [state]);
 
+	/*
 	const phase2EmailBg = {
 		hidden: { height: 0, opacity: 1 },
 		visible: i => ({
@@ -402,6 +405,7 @@ export default function Thread({ state }) {
 			},
 		},
 	};
+	*/
 
 	return (
 		<div
