@@ -215,12 +215,15 @@ export default function Thread({ state }) {
 				[scrollRef.current, { y: yStop1 - 282 }, { duration: dur, delay: 0.2 }],
 				[scrollRef.current, { y: yStop1 - 310 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 338 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 372 }, { duration: dur, delay: 0.2 }],
-				[scrollRef.current, { y: yStop1 - 400 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 428 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 466 }, { duration: dur, delay: 0.3 }],
+				[scrollRef.current, { y: yStop1 - 372 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 404 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 438 }, { duration: dur, delay: 0.1 }],
+				
+				[scrollRef.current, { y: yStop1 - 470 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 494 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.2 }],
+				[scrollRef.current, { y: yStop1 - 502 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 538 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.1 }],
 			];
 
 			animate(sequence);
@@ -236,12 +239,15 @@ export default function Thread({ state }) {
 				[emailHeightRef.current, { height: 140 }, { duration: dur, delay: 0.2 }],
 				[emailHeightRef.current, { height: 168 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 196 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 230 }, { duration: dur, delay: 0.2 }],
-				[emailHeightRef.current, { height: 258 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 286 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 324 }, { duration: dur, delay: 0.3 }],
+				[emailHeightRef.current, { height: 230 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 262 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 296 }, { duration: dur, delay: 0.1 }],
+
+				[emailHeightRef.current, { height: 328 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 352 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.2 }],
+				[emailHeightRef.current, { height: 360 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 396 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.1 }],
 			];
 
 			animate(heightSequence);
