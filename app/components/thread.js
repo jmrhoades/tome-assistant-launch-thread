@@ -101,7 +101,7 @@ export default function Thread({ state }) {
 	const emailP2Words = emailP2.split(" ");
 
 	const emailP3 =
-		"Since we last spoke, Prism has built a number of a new features that help finance teams automate manual processes and increase accuracy of financial reporting for year end.";
+		"Since we last spoke, Prism has been focusing on new ways to help finance teams automate manual processes and increase accuracy of financial reporting for year-end.";
 	const emailP3Words = emailP3.split(" ");
 
 	const emailP4 =

@@ -263,11 +263,7 @@
 
 .email .header .buttons button:active {
     transform: scale(.975);
-}
-
-.email .header .buttons .done {
-    /* background-color: var(--z2); */
-    /* pointer-events: none; */
+    /* background-color: hsl(0, 0%, 99%); */
 }
 
 .email .content {
