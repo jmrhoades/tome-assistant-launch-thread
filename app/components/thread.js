@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 import Image from "next/image";
 import Clock from "../icons/clock";
@@ -14,6 +14,9 @@ export default function Thread({ state }) {
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
 	const emailContentRef = React.useRef();
+	const p2MsgRef = React.useRef();
+
+	const p2Ref1 = React.useRef();
 
 	const variants = {
 		hidden: { opacity: 0 },
@@ -179,23 +182,104 @@ export default function Thread({ state }) {
 	React.useEffect(() => {
 		delay.current = 0;
 		if (state === 1) {
+			scrollRef.current.scrollTop = 0;
 			setEmailFocused(false);
 			emailContentRef.current.blur();
 		}
 		if (state === 2) {
+			const scrollRect = scrollRef.current.getBoundingClientRect();
+			const scrollHeight = scrollRect.height;
+			const contentHeight = scrollRef.current.scrollHeight;
+			const scrollTop = scrollRef.current.scrollTop;
 
-			// followupRef.current.scrollIntoView({
-			// 	block: "start",
+			const msgRect = p2MsgRef.current.getBoundingClientRect();
+			const msgBottom = msgRect.bottom;
+
+			//const bottomOffset = window.innerHeight;
+
+			const scrollY1 = msgBottom - scrollHeight - scrollTop + 100;
+			if (scrollY1 > 0) {
+				animate(scrollTop, scrollY1, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}
+
+			const scrollY2 = scrollY1 + 124;
+			const scrollY2T = 1000;
+			setTimeout(() => {
+				animate(scrollY1, scrollY2, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY2T);
+
+			const scrollY3 = scrollY2 + 148;
+			const scrollY3T = scrollY2T + 1000;
+			setTimeout(() => {
+				animate(scrollY2, scrollY3, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY3T);
+
+			
+
+			const scrollY4 = scrollY3 + 80;
+			const scrollY4T = scrollY3T + 500;
+			setTimeout(() => {
+				animate(scrollY3, scrollY4, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY4T);
+
+			const scrollY5 = scrollY4 + 130;
+			const scrollY5T = scrollY4T + 750;
+			setTimeout(() => {
+				animate(scrollY4, scrollY5, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY5T);
+
+			const scrollY6 = scrollY5 + 194;
+			const scrollY6T = scrollY5T + 1000;
+			setTimeout(() => {
+				animate(scrollY5, scrollY6, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY6T);
+
+			const scrollY7 = scrollY6 + 288;
+			const scrollY7T = scrollY6T + 500;
+			setTimeout(() => {
+				animate(scrollY6, scrollY7, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY7T);
+
+			const scrollY8 = scrollY7 + 352;
+			const scrollY8T = scrollY7T + 500;
+			setTimeout(() => {
+				animate(scrollY7, scrollY8, {
+					onUpdate: latest => (scrollRef.current.scrollTop = latest),
+				});
+			}, scrollY8T);
+
+			console.log(msgBottom, scrollHeight, contentHeight, scrollTop);
+
+			// p2MsgRef.current.scrollIntoView({
+			// 	block: "end",
 			// 	behavior: "smooth",
 			// });
 
+			//animate(scrollRef.current, {y:-100});
 		}
 	}, [state]);
 
 	const phase2EmailBg = {
 		hidden: { height: 0, opacity: 1 },
 		visible: i => ({
-			height: [0, 80, 80, 80, 80, 130, 130, 194, 194, 194, 194, 194, 194, 288, 288, 288, 288, 288, 288, 288, 288, 352, 352, 418],
+			height: [
+				0, 80, 80, 80, 80, 130, 130, 194, 194, 194, 194, 194, 194, 288, 288, 288, 288, 288, 288, 288, 288, 352, 352,
+				418,
+			],
 			opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 			transition: {
 				delay: emailStart,
@@ -433,6 +517,7 @@ export default function Thread({ state }) {
 						}}
 					>
 						<motion.div
+							ref={p2MsgRef}
 							custom={phase2Start}
 							animate={phase2}
 							variants={variants}
@@ -443,7 +528,7 @@ export default function Thread({ state }) {
 						</motion.div>
 
 						<div className={styles.system}>
-							<p>
+							<p ref={p2Ref1}>
 								{p4Words.map((w, i) => (
 									<motion.span
 										custom={para4Start + i * textIncrement}
