@@ -195,28 +195,17 @@ export default function Thread({ state }) {
 			emailContentRef.current.blur();
 		}
 		if (state === 2) {
-			const threadRect = threadRef.current.getBoundingClientRect();
-			const scrollRect = scrollRef.current.getBoundingClientRect();
-			const scrollHeight = scrollRect.height;
-			const contentHeight = scrollRef.current.scrollHeight;
-			const scrollTop = scrollRef.current.scrollTop;
+			//const threadRect = threadRef.current.getBoundingClientRect();
+			//const scrollRect = scrollRef.current.getBoundingClientRect();
+			//const scrollHeight = scrollRect.height;
+			//const contentHeight = scrollRef.current.scrollHeight;
+			//const scrollTop = scrollRef.current.scrollTop;
+			
 			const msgRect = p2MsgRef.current.getBoundingClientRect();
 			const msgBottom = msgRect.bottom;
-
-			//const bottomOffset = window.innerHeight;
-
-			// First scroll to bottom of message
-			
-			//let scrollY = msgBottom - scrollHeight - scrollTop + 100;
-			//let scrollDelay = 100;
-			//const scrollStops = [scrollTop, scrollY, scrollY + 124, scrollY + 124 + 148, scrollY + 124 + 148 + 80];
-			//const scrollStart = [0, 1000, 1500, 2000, 2500, 3000];
-
-			
 			const bottomDistAbs = window.innerHeight - 144;
-			//const yStop1 = msgBottom - window.innerHeight + 44;
 			const yStop1 = bottomDistAbs - msgBottom < 0 ? bottomDistAbs - msgBottom : 0;
-			console.log(msgBottom,  window.innerHeight, yStop1)
+			//console.log(msgBottom,  window.innerHeight, yStop1)
 
 			const dur = 0.2;
 			const sequence = [
@@ -257,7 +246,14 @@ export default function Thread({ state }) {
 			animate(sequence);
 
 			const heightSequence = [
-				[emailHeightRef.current, { height: 74 }, { duration: dur, delay: 1.8 }],
+				[emailHeightRef.current, { height: 0 }, { duration: dur }],
+				[emailHeightRef.current, { height: 0 }, { duration: dur, delay: 0.2 }],
+				[emailHeightRef.current, { height: 0 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 0 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 0 }, { duration: dur, delay: 0.1 }],
+
+
+				[emailHeightRef.current, { height: 74 }, { duration: dur, delay: 0.3 }],
 				[emailHeightRef.current, { height: 140 }, { duration: dur, delay: 0.2 }],
 				[emailHeightRef.current, { height: 168 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 196 }, { duration: dur, delay: 0.1 }],
