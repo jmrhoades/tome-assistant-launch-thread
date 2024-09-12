@@ -212,7 +212,7 @@ export default function Thread({ state }) {
 			const scrollStops = [scrollTop, scrollY, scrollY + 124, scrollY + 124 + 148, scrollY + 124 + 148 + 80];
 			const scrollStart = [0, 1000, 1500, 2000, 2500, 3000];
 
-			const yStop1 = msgBottom - threadRect.bottom - 40;
+			const yStop1 = msgBottom - threadRect.bottom - 108;
 			const yStops = [yStop1];
 			const yDelays = [0];
 
