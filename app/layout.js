@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} ${diatype.variable}`}>{children}</body>
+			<body className={`${diatype.className} ${diatype.variable}`}>{children}</body>
 		</html>
 	);
 }

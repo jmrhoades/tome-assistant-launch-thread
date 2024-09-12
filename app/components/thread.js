@@ -13,9 +13,10 @@ import StatusHoverCard from "./status-hover-card";
 export default function Thread({ state }) {
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
-    const emailContentRef = React.useRef();
+	const emailContentRef = React.useRef();
 
 	const variants = {
+		hidden: { opacity: 0 },
 		visible: i => ({
 			opacity: 1,
 			transition: {
@@ -23,10 +24,16 @@ export default function Thread({ state }) {
 				duration: 0.2,
 			},
 		}),
-		hidden: { opacity: 0 },
+		finished: {
+			opacity: 1,
+			transition: {
+				duration: 0,
+			},
+		},
 	};
 
-	const phase1 = state > 0 ? "visible" : "hidden";
+	const phase1 = state === 2 ? "finished" : state === 1 ? "visible" : "hidden";
+
 	const phase2 = state > 1 ? "visible" : "hidden";
 
 	const delay = React.useRef(0);
@@ -144,33 +151,66 @@ export default function Thread({ state }) {
 	const emailPara5Start = emailPara4End + delayIncrement * 1;
 	const emailPara5End = emailPara5Start + emailP5Words.length * textIncrement;
 
-    const [emailFocused, setEmailFocused] = React.useState(false);
+	const [emailFocused, setEmailFocused] = React.useState(false);
 
-    const onEditClick = e => {
-        emailContentRef.current.focus();
-        e.preventDefault();
-    }
+	const onEditClick = e => {
+		console.log(emailFocused);
+		if (emailFocused) {
+			setEmailFocused(false);
+			emailContentRef.current.blur();
+		} else {
+			setEmailFocused(true);
+			emailContentRef.current.focus();
+		}
+		e.stopPropagation();
+		e.preventDefault();
+	};
 
-    const onEmailContentFocus = e => {
-        setEmailFocused(true)
-        e.preventDefault();
-    }
+	const onEmailContentFocus = e => {
+		setEmailFocused(true);
+		e.preventDefault();
+	};
 
-    const onEmailContentBlur = e => {
-        setEmailFocused(false)
-        e.preventDefault();
-    }
-
+	const onEmailContentBlur = e => {
+		setEmailFocused(false);
+		e.preventDefault();
+	};
 
 	React.useEffect(() => {
 		delay.current = 0;
+		if (state === 1) {
+			setEmailFocused(false);
+			emailContentRef.current.blur();
+		}
 		if (state === 2) {
+
 			followupRef.current.scrollIntoView({
 				block: "start",
 				behavior: "smooth",
 			});
+
 		}
 	}, [state]);
+
+	const phase2EmailBg = {
+		hidden: { height: 0, opacity: 1 },
+		visible: i => ({
+			height: [0, 80, 80, 80, 80, 130, 130, 194, 194, 194, 194, 194, 194, 288, 288, 288, 288, 288, 288, 288, 288, 352, 352, 418],
+			opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			transition: {
+				delay: emailStart,
+				duration: 3,
+				ease: "linear",
+				//times: [0, 0.5, 0.5, 1.0, 1.0, 1.5, 1.5, 2.0, 2.0, 2.5, 2.5, 3.0]
+			},
+		}),
+		finished: {
+			height: "100%",
+			transition: {
+				duration: 0,
+			},
+		},
+	};
 
 	return (
 		<div
@@ -420,133 +460,146 @@ export default function Thread({ state }) {
 
 						<motion.div
 							className={styles.email}
-							custom={emailStart}
-							animate={phase2}
-							variants={variants}
-							initial={false}
+							// custom={emailStart}
+							// animate={phase2}
+							// variants={variants}
+							// initial={false}
 						>
-							<div className={styles.header}>
-								<div className={styles.contact}>
-									<motion.span
-										custom={emailHeaderStart + delayIncrement * 1}
-										animate={phase2}
-										variants={variants}
-										initial={false}
-									>
-										<Image
-											src={"/avatars/claire-emerson.jpg"}
-											alt={"Claire Emerson"}
-											width={44}
-											height={44}
-										/>
-									</motion.span>
-									<span className={styles.details}>
-										<motion.h6
-											custom={emailHeaderStart + delayIncrement * 2}
+							<motion.div
+								className={styles.emailcontent}
+								animate={phase2}
+								variants={phase2EmailBg}
+								initial={false}
+							>
+								<div className={styles.header}>
+									<div className={styles.contact}>
+										<motion.span
+											custom={emailHeaderStart + delayIncrement * 1}
 											animate={phase2}
 											variants={variants}
 											initial={false}
 										>
-											Claire Emerson
-										</motion.h6>
-										<motion.p
-											custom={emailHeaderStart + delayIncrement * 3}
+											<Image
+												src={"/avatars/claire-emerson.jpg"}
+												alt={"Claire Emerson"}
+												width={44}
+												height={44}
+											/>
+										</motion.span>
+										<span className={styles.details}>
+											<motion.h6
+												custom={emailHeaderStart + delayIncrement * 2}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+											>
+												Claire Emerson
+											</motion.h6>
+											<motion.p
+												custom={emailHeaderStart + delayIncrement * 3}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+											>
+												Vice President, Finance
+											</motion.p>
+										</span>
+									</div>
+									<div className={styles.buttons}>
+										<motion.button
+											custom={emailHeaderStart + delayIncrement * 4}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+											onMouseDown={onEditClick}
+										>
+											{emailFocused ? "Done" : "Edit"}
+										</motion.button>
+
+										<motion.button
+											custom={emailHeaderStart + delayIncrement * 5}
 											animate={phase2}
 											variants={variants}
 											initial={false}
 										>
-											Vice President, Finance
-										</motion.p>
-									</span>
+											Copy
+										</motion.button>
+									</div>
 								</div>
-								<div className={styles.buttons}>
-									<motion.button
-										custom={emailHeaderStart + delayIncrement * 4}
-										animate={phase2}
-										variants={variants}
-										initial={false}
-                                        onClick={onEditClick}
-                                        disabled={emailFocused}
-									>
-										Edit
-									</motion.button>
-									<motion.button
-										custom={emailHeaderStart + delayIncrement * 5}
-										animate={phase2}
-										variants={variants}
-										initial={false}
-									>
-										Copy
-									</motion.button>
+								<div
+									className={styles.content}
+									contentEditable={true}
+									ref={emailContentRef}
+									onFocus={onEmailContentFocus}
+									onBlur={onEmailContentBlur}
+								>
+									<p>
+										{emailP1Words.map((w, i) => (
+											<motion.span
+												custom={emailPara1Start + i * textIncrement}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+												key={i}
+											>
+												{w}{" "}
+											</motion.span>
+										))}
+									</p>
+									<p>
+										{emailP2Words.map((w, i) => (
+											<motion.span
+												custom={emailPara2Start + i * textIncrement}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+												key={i}
+											>
+												{w}{" "}
+											</motion.span>
+										))}
+									</p>
+									<p>
+										{emailP3Words.map((w, i) => (
+											<motion.span
+												custom={emailPara3Start + i * textIncrement}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+												key={i}
+											>
+												{w}{" "}
+											</motion.span>
+										))}
+									</p>
+									<p>
+										{emailP4Words.map((w, i) => (
+											<motion.span
+												custom={emailPara4Start + i * textIncrement}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+												key={i}
+											>
+												{w}{" "}
+											</motion.span>
+										))}
+									</p>
+									<p>
+										{emailP5Words.map((w, i) => (
+											<motion.span
+												custom={emailPara5Start + i * textIncrement}
+												animate={phase2}
+												variants={variants}
+												initial={false}
+												key={i}
+											>
+												{w}{" "}
+											</motion.span>
+										))}
+									</p>
 								</div>
-							</div>
-							<div className={styles.content} contentEditable={true} ref={emailContentRef} onFocus={onEmailContentFocus} onBlur={onEmailContentBlur}>
-								<p>
-									{emailP1Words.map((w, i) => (
-										<motion.span
-											custom={emailPara1Start + i * textIncrement}
-											animate={phase2}
-											variants={variants}
-											initial={false}
-											key={i}
-										>
-											{w}{" "}
-										</motion.span>
-									))}
-								</p>
-								<p>
-									{emailP2Words.map((w, i) => (
-										<motion.span
-											custom={emailPara2Start + i * textIncrement}
-											animate={phase2}
-											variants={variants}
-											initial={false}
-											key={i}
-										>
-											{w}{" "}
-										</motion.span>
-									))}
-								</p>
-								<p>
-									{emailP3Words.map((w, i) => (
-										<motion.span
-											custom={emailPara3Start + i * textIncrement}
-											animate={phase2}
-											variants={variants}
-											initial={false}
-											key={i}
-										>
-											{w}{" "}
-										</motion.span>
-									))}
-								</p>
-								<p>
-									{emailP4Words.map((w, i) => (
-										<motion.span
-											custom={emailPara4Start + i * textIncrement}
-											animate={phase2}
-											variants={variants}
-											initial={false}
-											key={i}
-										>
-											{w}{" "}
-										</motion.span>
-									))}
-								</p>
-								<p>
-									{emailP5Words.map((w, i) => (
-										<motion.span
-											custom={emailPara5Start + i * textIncrement}
-											animate={phase2}
-											variants={variants}
-											initial={false}
-											key={i}
-										>
-											{w}{" "}
-										</motion.span>
-									))}
-								</p>
-							</div>
+							</motion.div>
 						</motion.div>
 						{/* <div className={styles.spacer} ref={lastItemRef} /> */}
 					</motion.div>

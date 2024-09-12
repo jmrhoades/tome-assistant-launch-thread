@@ -2,7 +2,7 @@
     padding: 6px 12px;
     padding-left: 10px;
     gap: 6px;
-    border: 1px solid var(--t2);
+    border: 1px solid var(--t3);
     border-radius: 12px;
     color: var(--t7);
     font-size: 14px;
@@ -18,7 +18,8 @@
     font-family: var(--font-diatype);
     gap: 24px;
     background-color: var(--z0);
-    outline: 0.5px solid var(--t2);
+    outline: 0.5px solid var(--t3);
+    outline-offset: -.5px;
     border-radius: 12px;
     box-shadow: 0px 13px 8px 0px rgba(0, 0, 0, 0.01), 0px 6px 6px 0px rgba(0, 0, 0, 0.01), 0px 1px 3px 0px rgba(0, 0, 0, 0.01);
 }
@@ -30,8 +31,6 @@
 }
 
 .card h6 {
-    font-size: 12px;
-    line-height: 140%;
     color: var(--t7);
 }
 

@@ -32,7 +32,6 @@
     background-color: var(--user-message-background);
     color: var(--user-message-text);
     line-height: 22px;
-
 }
 
 .system {
@@ -179,17 +178,33 @@
 }
 
 .email {
-    background-color: rgba(0, 0, 0, 0.04);
-    outline: 0.5px solid rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
+    height: 418px;
+    position: relative;
+   
+    
+
+    /* mask: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%));
+    mask-size: 100% 50%;
+    mask-repeat: no-repeat; */
+}
+
+.emailcontent {
+    position: absolute;
+    inset: 0;
+    overflow: clip;
+
     padding: 16px 20px;
-    padding-bottom: 16px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    background-color: rgba(0, 0, 0, 0.04);
+    outline: 0.5px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
 }
 
 .email .header {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -205,7 +220,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    
 }
 
 .email .header .contact .details h6 {
@@ -244,24 +258,31 @@
 }
 
 .email .header .buttons button:hover {
-    background-color: var(--z2);
+    /* background-color: var(--z2); */
 }
 
-.email .header .buttons button:disabled {
-    background-color: var(--z2);
-    pointer-events: none;
+.email .header .buttons button:active {
+    transform: scale(.975);
+}
+
+.email .header .buttons .done {
+    /* background-color: var(--z2); */
+    /* pointer-events: none; */
 }
 
 .email .content {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 16px 18px;
+    border-radius: 8px;
+    outline: 1px solid var(--t0);
+    transition: all 0.1s ease-out;
 }
 
 .email .content:focus {
-    outline: 0.5px solid var(--t0);
-    border-radius: 8px;
+    outline: 1px solid var(--t4);
 }
 
 .spacer {
