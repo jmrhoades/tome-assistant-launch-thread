@@ -79,12 +79,12 @@ export default function Thread({ state }) {
 	const h3Words = h3.split(" ");
 
 	const p3 =
-		"Spectral recently received a fine from the SEC for filing reporting late. There suggests to be a clear indication of operational efficiency improvements in order to file on-time.";
+		"Spectral recently received a fine from the SEC for filing reporting late. There appears to be a clear need for operational efficiency improvements to ensure on-time filings.";
 
 	const p3Words = p3.split(" ");
 
 	const p4 =
-		"You should reach out to Claire Emerson, VP of Finance. She evaluated was the main evaluator of your product nine months ago, and is senior enough to have authority over budget. Focus on the ability to nail reporting with speed. Reference the Senzo case study, given they use Prism for a similar use case.";
+		"You should reach out to Claire Emerson, VP of Finance. She was the main evaluator of your product nine months ago and is senior enough to have budget authority. Focus on the ability to nail reporting with speed. Reference the Senzo case study, given they use Prism for a similar use case.";
 
 	const p4Words = p4.split(" ");
 
@@ -123,7 +123,7 @@ export default function Thread({ state }) {
 	const emailP2Words = emailP2.split(" ");
 
 	const emailP3 =
-		"Prism helps finance teams automate manual processes. Senzo, a global bank of similar size, sped up the financial reporting process by 50% while cutting costs by 20%.";
+		"Prism helps finance teams automate manual processes. Senzo, a global bank of similar size, sped up the financial reporting process by 50% while cutting costs by more than 20%.";
 	const emailP3Words = emailP3.split(" ");
 
 	const emailP4 = "Would you be open to a brief call to explore how Prism can help?";
