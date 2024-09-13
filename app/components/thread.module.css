@@ -181,10 +181,12 @@
 }
 
 .email {
-    height: 418px;
+    /* height: 418px; */
     position: relative;
    
-    
+    background-color: rgba(0, 0, 0, 0.04);
+    outline: 0.5px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
 
     /* mask: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 100%));
     mask-size: 100% 50%;
@@ -192,19 +194,17 @@
 }
 
 .emailcontent {
-    position: absolute;
+    /* position: absolute;
     inset: 0;
     overflow: clip;
-    height: 0;
+    height: 0; */
 
     padding: 16px 20px;
     display: flex;
     flex-direction: column;
     gap: 24px;
 
-    background-color: rgba(0, 0, 0, 0.04);
-    outline: 0.5px solid rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
+   
 }
 
 .email .header {

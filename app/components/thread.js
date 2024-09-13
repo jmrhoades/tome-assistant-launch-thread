@@ -559,8 +559,9 @@ export default function Thread({ state }) {
 							animate={phase2}
 							variants={variants}
 							initial={false}
+							ref={emailHeightRef}
 						>
-							<motion.div className={styles.emailcontent} ref={emailHeightRef}>
+							<motion.div className={styles.emailcontent} >
 								<div className={styles.header}>
 									<div className={styles.contact}>
 										<motion.span
