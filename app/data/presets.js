@@ -50,7 +50,7 @@ export const presets = [
 	{
 		id: "value-drivers",
 		label: "Business initiatives",
-		info: "Identify top initiative and leadership driving them.",
+		info: "Identify key initiatives and the leaders driving them.",
 		icon: <Heart size={24} />,
 		prompt: "Value drivers",
 		accentColor: "var(--text-color-sand)",
@@ -58,7 +58,7 @@ export const presets = [
 	{
 		id: "company-industry-overview",
 		label: "Financials & competition",
-		info: "Get key facts about the company and industry.",
+		info: "Understand performance and market dynamics.",
 		icon: <Building size={24} />,
 		prompt: "Company & industry overview",
 		accentColor: "var(--text-color-mint)",
