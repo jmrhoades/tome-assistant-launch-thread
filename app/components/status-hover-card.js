@@ -12,9 +12,9 @@ export default function StatusHoverCard({ state }) {
 	return (
 		<HoverCard.Root openDelay={0} closeDelay={50}>
 			<HoverCard.Trigger className={styles.button}>
-				<button>
+				<button className="status-button">
 					<XInCircle size={18} />
-					Closed Lost
+					<span className="ui-label">Closed Lost</span>
 				</button>
 			</HoverCard.Trigger>
 			<HoverCard.Portal>

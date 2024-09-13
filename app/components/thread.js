@@ -5,13 +5,12 @@ import { animate, motion } from "framer-motion";
 
 import Image from "next/image";
 import Clock from "../icons/clock";
-import XInCircle from "../icons/x-in-circle";
+
 import styles from "./thread.module.css";
 import { diatype, diatypeMono } from "../fonts/fonts";
 import StatusHoverCard from "./status-hover-card";
 
 export default function Thread({ state }) {
-
 	const scrollRef = React.useRef();
 	const followupRef = React.useRef();
 	const emailContentRef = React.useRef();
@@ -85,7 +84,7 @@ export default function Thread({ state }) {
 	const p3Words = p3.split(" ");
 
 	const p4 =
-		"You should reach out to Claire Emerson, VP of Finance. She is a recent hire on the finance team is likely attached to Spectral’s Operational Efficiency initiative. She could be a crucial decision-maker or influencer. Considering referencing the Senzo case study, given they operate in the same industry.";
+		"You should reach out to Claire Emerson, VP of Finance. She evaluated was the main evaluator of your product nine months ago, and is senior enough to have authority over budget. Focus on the ability to nail reporting with speed. Reference the Senzo case study, given they use Prism for a similar use case.";
 
 	const p4Words = p4.split(" ");
 
@@ -120,18 +119,17 @@ export default function Thread({ state }) {
 	const emailP1Words = emailP1.split(" ");
 
 	const emailP2 =
-		"Last year we had a few conversations about how we could support Spectral’s financial and operational goals. We’ve got some interesting updates for you.";
+		"Last year we had a few conversations about how we could support Spectral’s operational goals. We’ve got some interesting updates for you.";
 	const emailP2Words = emailP2.split(" ");
 
 	const emailP3 =
 		"Prism helps finance teams automate manual processes. Senzo, a global bank of similar size, sped up the financial reporting process by 50% while cutting costs by 20%.";
 	const emailP3Words = emailP3.split(" ");
 
-	const emailP4 =
-		"Would you be open to a brief call to explore how Prism can help?";
+	const emailP4 = "Would you be open to a brief call to explore how Prism can help?";
 	const emailP4Words = emailP4.split(" ");
 
-	const emailP5 = "Best regards, Owen";
+	const emailP5 = "Best regards,";
 	const emailP5Words = emailP5.split(" ");
 
 	const delayIncrement = 0.075;
@@ -192,6 +190,9 @@ export default function Thread({ state }) {
 			setEmailFocused(false);
 			emailContentRef.current.blur();
 		} else {
+			//emailHeightRef.current.style.height = "auto"
+			animate(emailHeightRef.current, { height: "auto" }, { duration: 0 });
+
 			setEmailFocused(true);
 			emailContentRef.current.focus();
 		}
@@ -238,13 +239,14 @@ export default function Thread({ state }) {
 				[scrollRef.current, { y: yStop1 - 372 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 404 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 438 }, { duration: dur, delay: 0.1 }],
-				
+
 				[scrollRef.current, { y: yStop1 - 470 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 494 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 502 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 526 }, { duration: dur, delay: 0.1 }],
-				//[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.1 }],
 			];
+			
 
 			animate(sequence);
 
@@ -267,7 +269,7 @@ export default function Thread({ state }) {
 				[emailHeightRef.current, { height: 352 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 360 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 384 }, { duration: dur, delay: 0.1 }],
-				//[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.1 }],
 			];
 
 			animate(heightSequence);
@@ -333,8 +335,9 @@ export default function Thread({ state }) {
 								variants={variants}
 								initial={false}
 							>
-								<button>
-									<Clock size={18} /> 9 months ago
+								<button className="status-button">
+									<Clock size={18} />
+									<span className="ui-label">9 months ago</span>
 								</button>
 							</motion.div>
 						</div>
@@ -479,7 +482,7 @@ export default function Thread({ state }) {
 								variants={variants}
 								initial={false}
 							>
-								contacts{" "}
+								Contacts{" "}
 							</motion.span>
 						</h3>
 						<div className={styles.contacts}>
@@ -561,7 +564,7 @@ export default function Thread({ state }) {
 							initial={false}
 							ref={emailHeightRef}
 						>
-							<motion.div className={styles.emailcontent} >
+							<motion.div className={styles.emailcontent}>
 								<div className={styles.header}>
 									<div className={styles.contact}>
 										<motion.span
@@ -688,6 +691,15 @@ export default function Thread({ state }) {
 												{w}{" "}
 											</motion.span>
 										))}
+										<br />
+										<motion.span
+											custom={emailPara5End + 1 * textIncrement}
+											animate={phase2}
+											variants={variants}
+											initial={false}
+										>
+											Owen
+										</motion.span>
 									</p>
 								</div>
 							</motion.div>

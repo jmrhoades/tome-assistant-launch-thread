@@ -29,3 +29,15 @@ a,
 button {
     transition: all 0.1s ease-out;
 }
+
+.status-button {
+    padding: 6px 12px;
+    padding-left: 10px;
+    gap: 6px;
+    border: 1px solid var(--border-color);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 999px;
+}
+

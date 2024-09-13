@@ -21,7 +21,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--message-spacing);
-    padding: 64px 12px 128px;
+    padding: 64px 0 128px;
+    max-width: 648px;
 }
 
 .user {
@@ -70,21 +71,10 @@
     padding-bottom: 12px;
 }
 
-.meta button {
-    padding: 6px 12px;
-    padding-left: 10px;
-    gap: 6px;
-    border: 1px solid var(--t2);
-    border-radius: 999px;
-    /* color: var(--t7); */
-    color: rgba(0, 0, 0, 0.6);
 
-    font-size: 14px;
-    line-height: 22px;
-}
 
 .system h3 {
-    padding-top: 12px;
+    /* padding-top: 12px; */
     color: var(--t9);
     font-weight: 500;
 }
@@ -94,10 +84,11 @@
 }
 
 .refgroup {
-    padding-left: 6px;
+    padding-left: 4px;
     display: inline-flex;
     gap: 4px;
     vertical-align: middle;
+    transform: translateY(-2px);
 }
 
 .ref {
@@ -107,7 +98,7 @@
     padding: 4px 5px 3px;
     border-radius: 4px;
     background-color: var(--z1);
-    min-width: 16px;
+    min-width: 12px;
     text-align: center;
 }
 
@@ -158,7 +149,7 @@
     padding: 6px 4px;
     padding-right: 7px;
     border-radius: 4px;
-    outline: 0.5px solid rgba(0, 0, 0, 0.12);
+    outline: 0.5px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 6px;

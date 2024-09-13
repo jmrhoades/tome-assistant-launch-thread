@@ -25,11 +25,11 @@ export default function Home({ state }) {
 			<div className={styles.meta}>
 				<Button>
 					<Opportunity size={20} />
-					Spectral – Closed Lost
+					<span className="ui-label">Spectral – Closed Lost</span>
 				</Button>
 				<Button>
 					<Image src={"/avatars/owen-tanada.jpg"} alt={"Owen Tanada"} width={18} height={18} />
-					Owen Tanada
+					<span className="ui-label">Owen Tanada</span>
 				</Button>
 			</div>
 		</motion.div>
