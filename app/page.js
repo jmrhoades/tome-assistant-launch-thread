@@ -83,7 +83,7 @@ export default function Index() {
 						className={styles.cards}
 						initial={{ opacity: 0 }}
 						animate={{ opacity: state === 0 ? 1 : 0 }}
-						transition={{ duration: 0.25 }}
+						transition={{ duration: 0 }}
 					>
 						{cards.map(o => (
 							<PresetCard

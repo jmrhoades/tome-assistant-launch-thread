@@ -21,6 +21,25 @@ export default function Thread({ state }) {
 
 	const p2Ref1 = React.useRef();
 
+	const userVariants = {
+		hidden: { opacity: 0, y: 0 },
+		visible: i => ({
+			opacity: 1,
+			y: 0,
+			transition: {
+				delay: i,
+				duration: 0.1,
+			},
+		}),
+		finished: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0,
+			},
+		},
+	};
+
 	const variants = {
 		hidden: { opacity: 0 },
 		visible: i => ({
@@ -46,14 +65,14 @@ export default function Thread({ state }) {
 	const h1Words = h1.split(" ");
 
 	const p1 =
-		"Spectral is a global financial institution that offers banking and financial services to individuals and businesses. Established in 2009, Spectral has grown to become a trusted name in the banking sector, with headquarters in New York City and London. Spectral employs over 10,000 people and reported $4.2B in revenue for fiscal year 2023.";
+		"Spectral is a global financial institution that offers banking services to individuals and businesses. Established in 2009, Spectral has grown to become a trusted name in the banking sector, with headquarters in New York City and London. Spectral employs over 10,000 people and reported $4.2B in revenue for fiscal year 2023.";
 	const p1Words = p1.split(" ");
 
 	const h2 = "Account History";
 	const h2Words = h2.split(" ");
 
 	const p2 =
-		"A past employee at Prism connected with Claire Emerson (Vice President, Finance) at Spectral one year ago. The “Closed-Lost” decision is marked as “non-responsive”.";
+		"A past employee at Prism connected with Claire Emerson (Vice President, Finance) at Spectral nine months ago. The “Closed-Lost” decision is marked as “Lost to Competitor”.";
 
 	const p2Words = p2.split(" ");
 
@@ -61,7 +80,7 @@ export default function Thread({ state }) {
 	const h3Words = h3.split(" ");
 
 	const p3 =
-		"Spectral recently received a fine from the SEC for filing a reporting late. There suggests to be a clear indication of operational efficiency improvements in order to file on-time.";
+		"Spectral recently received a fine from the SEC for filing reporting late. There suggests to be a clear indication of operational efficiency improvements in order to file on-time.";
 
 	const p3Words = p3.split(" ");
 
@@ -101,15 +120,15 @@ export default function Thread({ state }) {
 	const emailP1Words = emailP1.split(" ");
 
 	const emailP2 =
-		"I hope this message finds you well. Last year we had a few conversations about how we could support Spectral’s financial and operational goals.";
+		"Last year we had a few conversations about how we could support Spectral’s financial and operational goals. We’ve got some interesting updates for you.";
 	const emailP2Words = emailP2.split(" ");
 
 	const emailP3 =
-		"Since we last spoke, Prism has been focusing on new ways to help finance teams automate manual processes and increase accuracy of financial reporting for year-end.";
+		"Prism helps finance teams automate manual processes. Senzo, a global bank of similar size, sped up the financial reporting process by 50% while cutting costs by 20%.";
 	const emailP3Words = emailP3.split(" ");
 
 	const emailP4 =
-		"Would you be open to a brief call next week to explore how Prism can better support your team and strategic initiatives?";
+		"Would you be open to a brief call to explore how Prism can help?";
 	const emailP4Words = emailP4.split(" ");
 
 	const emailP5 = "Best regards, Owen";
@@ -119,7 +138,8 @@ export default function Thread({ state }) {
 	const textIncrement = 0.03;
 	const cardIncrement = 0.15;
 
-	const headingStart = delayIncrement * 8;
+	const startDelay = 0.25;
+	const headingStart = startDelay + 0.5;
 
 	const h1Start = headingStart + delayIncrement * 5;
 
@@ -222,8 +242,8 @@ export default function Thread({ state }) {
 				[scrollRef.current, { y: yStop1 - 470 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 494 }, { duration: dur, delay: 0.1 }],
 				[scrollRef.current, { y: yStop1 - 502 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 538 }, { duration: dur, delay: 0.1 }],
-				[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.1 }],
+				[scrollRef.current, { y: yStop1 - 526 }, { duration: dur, delay: 0.1 }],
+				//[scrollRef.current, { y: yStop1 - 560 }, { duration: dur, delay: 0.1 }],
 			];
 
 			animate(sequence);
@@ -246,8 +266,8 @@ export default function Thread({ state }) {
 				[emailHeightRef.current, { height: 328 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 352 }, { duration: dur, delay: 0.1 }],
 				[emailHeightRef.current, { height: 360 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 396 }, { duration: dur, delay: 0.1 }],
-				[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.1 }],
+				[emailHeightRef.current, { height: 384 }, { duration: dur, delay: 0.1 }],
+				//[emailHeightRef.current, { height: 418 }, { duration: dur, delay: 0.1 }],
 			];
 
 			animate(heightSequence);
@@ -266,9 +286,9 @@ export default function Thread({ state }) {
 				<div className={styles.threadcontent}>
 					<motion.div
 						className={styles.user}
-						custom={delayIncrement * 1}
+						custom={startDelay}
 						animate={phase1}
-						variants={variants}
+						variants={userVariants}
 						initial={false}
 					>
 						Can you share the latest information on Spectral?
